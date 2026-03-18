@@ -141,4 +141,4 @@ normal, multiply, screen, overlay, darken, lighten, colorDodge, colorBurn, hardL
 
 Apache License 2.0 - See [LICENSE](LICENSE) for details.
 
-Copyright (c) 2024 BLOUplanet
+Copyright (c) 2024-2026 BLOUplanet
