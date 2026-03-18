@@ -1,6 +1,8 @@
 # OutoCut
 
-<img src="logo.svg" width="120" align="right" />
+<p align="center">
+  <img src="logo.svg" width="400" alt="OutoCut" />
+</p>
 
 AI-friendly video editor - The CLI tool for motion graphics and video editing.
 
