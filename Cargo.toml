@@ -2,10 +2,10 @@
 name = "outocut"
 version = "0.1.0"
 edition = "2021"
-authors = ["OutoCut Team"]
+authors = ["BLOUplanet"]
 description = "AI-friendly video editor - CLI tool for motion graphics and video editing"
-license = "MIT"
-repository = "https://github.com/outocut/outocut"
+license = "Apache-2.0"
+repository = "https://github.com/llaa33219/outocut"
 rust-version = "1.75"
 
 [[bin]]

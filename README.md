@@ -1,6 +1,10 @@
 # OutoCut
 
+<img src="logo.svg" width="120" align="right" />
+
 AI-friendly video editor - The CLI tool for motion graphics and video editing.
+
+**Made by BLOUplanet**
 
 ## Philosophy
 
@@ -20,13 +24,13 @@ Every aspect of your project is data. Every animation is reproducible. Every fra
 ## Installation
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/outocut/outocut/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/llaa33219/outocut/main/install.sh | bash
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/outocut/outocut.git
+git clone https://github.com/llaa33219/outocut.git
 cd outocut
 cargo build --release
 sudo mv target/release/outocut /usr/local/bin/
@@ -98,7 +102,7 @@ OutoCut projects are pure JSON files with `.outocut` extension. They support com
 }
 ```
 
-See [File Format Specification](ai-docs/usage/file-format.md) for complete documentation.
+See [File Format Specification](https://github.com/llaa33219/outocut/blob/main/ai-docs/usage/file-format.md) for complete documentation.
 
 ## Features
 
@@ -135,4 +139,6 @@ normal, multiply, screen, overlay, darken, lighten, colorDodge, colorBurn, hardL
 
 ## License
 
-MIT
+Apache License 2.0 - See [LICENSE](LICENSE) for details.
+
+Copyright (c) 2024 BLOUplanet
