@@ -1,0 +1,19 @@
+# Build artifacts
+/target/
+*.rlib
+*.pdb
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Cache directories
+.cargo/
+.crates/
+.rustup/
+
+# Project-specific cache
+.outocut.cache/
+*.cache/
