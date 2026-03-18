@@ -1,0 +1,35 @@
+{
+  // This is a test project with comments
+  "version": "1.0",
+  "metadata": {
+    "name": "test_with_comments",
+    /* Multi-line
+       comment test */
+    "created": "2026-03-17T22:40:00Z",
+    "author": "test",
+    "description": "test",
+    "tags": []
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 5.0,
+    "backgroundColor": "#000000",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 5.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": []
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": []
+}

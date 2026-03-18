@@ -1,0 +1,311 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "name": "09_blend_modes",
+    "created": "2026-03-18T00:00:00Z",
+    "author": "OutoCut Team",
+    "description": "Various blend modes example",
+    "tags": ["blend", "mode", "tutorial"]
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 6.0,
+    "backgroundColor": "#ffffff",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 6.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "normal_bg",
+          "type": "solid",
+          "name": "Normal Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [320, 270], "keyframes": null},
+            "position": {"value": [320, 270], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ffffff"}
+        },
+        {
+          "id": "normal_overlay",
+          "type": "solid",
+          "name": "Normal",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [320, 270], "keyframes": null},
+            "position": {"value": [320, 270], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ff0000"}
+        },
+        {
+          "id": "multiply_bg",
+          "type": "solid",
+          "name": "Multiply Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 270], "keyframes": null},
+            "position": {"value": [960, 270], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ffffff"}
+        },
+        {
+          "id": "multiply_overlay",
+          "type": "solid",
+          "name": "Multiply",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "multiply",
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 270], "keyframes": null},
+            "position": {"value": [960, 270], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ff0000"}
+        },
+        {
+          "id": "screen_bg",
+          "type": "solid",
+          "name": "Screen Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [1600, 270], "keyframes": null},
+            "position": {"value": [1600, 270], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#000000"}
+        },
+        {
+          "id": "screen_overlay",
+          "type": "solid",
+          "name": "Screen",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [1600, 270], "keyframes": null},
+            "position": {"value": [1600, 270], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ff0000"}
+        },
+        {
+          "id": "overlay_bg",
+          "type": "solid",
+          "name": "Overlay Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [320, 810], "keyframes": null},
+            "position": {"value": [320, 810], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#808080"}
+        },
+        {
+          "id": "overlay_overlay",
+          "type": "solid",
+          "name": "Overlay",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "overlay",
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [320, 810], "keyframes": null},
+            "position": {"value": [320, 810], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ff0000"}
+        },
+        {
+          "id": "add_bg",
+          "type": "solid",
+          "name": "Add Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 810], "keyframes": null},
+            "position": {"value": [960, 810], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#000000"}
+        },
+        {
+          "id": "add_overlay",
+          "type": "solid",
+          "name": "Add",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 810], "keyframes": null},
+            "position": {"value": [960, 810], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#00ff00"}
+        },
+        {
+          "id": "difference_bg",
+          "type": "solid",
+          "name": "Difference Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [1600, 810], "keyframes": null},
+            "position": {"value": [1600, 810], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ffffff"}
+        },
+        {
+          "id": "difference_overlay",
+          "type": "solid",
+          "name": "Difference",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "difference",
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [1600, 810], "keyframes": null},
+            "position": {"value": [1600, 810], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ff0000"}
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {"name": "youtube", "codec": "h264", "crf": 18, "preset": "slow"}
+  ]
+}

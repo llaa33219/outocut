@@ -1,0 +1,371 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "name": "10_nested_composition",
+    "created": "2026-03-18T00:00:00Z",
+    "author": "OutoCut Team",
+    "description": "Nested composition example - pre-comp demo",
+    "tags": ["composition", "nested", "precomp", "tutorial"]
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 10.0,
+    "backgroundColor": "#0f0f1a",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 10.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "bg",
+          "type": "solid",
+          "name": "Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 10.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 540], "keyframes": null},
+            "position": {"value": [960, 540], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#0f0f1a"}
+        },
+        {
+          "id": "title_animation",
+          "type": "composition",
+          "name": "Title Animation",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 10.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 300], "keyframes": null},
+            "position": {"value": [960, 300], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {
+            "compositionId": "title_comp"
+          }
+        },
+        {
+          "id": "badge_animation",
+          "type": "composition",
+          "name": "Badge Animation",
+          "enabled": true,
+          "startTime": 3,
+          "duration": 7.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [1700, 150], "keyframes": null},
+            "position": {
+              "value": [1700, 150],
+              "keyframes": [
+                {"time": 3, "value": [1950, 150], "easing": "easeOutBack"},
+                {"time": 4, "value": [1700, 150]}
+              ]
+            },
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {
+            "compositionId": "badge_comp"
+          }
+        },
+        {
+          "id": "footer_animation",
+          "type": "composition",
+          "name": "Footer Animation",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 10.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 950], "keyframes": null},
+            "position": {"value": [960, 950], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {
+            "compositionId": "footer_comp"
+          }
+        }
+      ]
+    },
+    "title_comp": {
+      "id": "comp_title",
+      "duration": 5.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "title_bg",
+          "type": "solid",
+          "name": "Title Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 5.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 540], "keyframes": null},
+            "position": {"value": [960, 540], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#00000000"}
+        },
+        {
+          "id": "main_title",
+          "type": "text",
+          "name": "Main Title",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 5.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              {"time": 0.5, "value": 0, "easing": "linear"},
+              {"time": 1.5, "value": 100, "easing": "easeOutCubic"}
+            ]
+          },
+          "transform": {
+            "anchor": {"value": [960, 540], "keyframes": null},
+            "position": {
+              "value": [960, 540],
+              "keyframes": [
+                {"time": 0, "value": [960, 580], "easing": "easeOutBack"},
+                {"time": 1.5, "value": [960, 540]}
+              ]
+            },
+            "scale": {
+              "value": [0, 0],
+              "keyframes": [
+                {"time": 0.5, "value": [0, 0], "easing": "easeOutBack"},
+                {"time": 1.5, "value": [100, 100]}
+              ]
+            },
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {
+            "text": "NESTED COMPOSITIONS",
+            "fontId": null,
+            "fontSize": 100,
+            "color": "#ffffff",
+            "tracking": null,
+            "leading": null,
+            "alignment": "center",
+            "baselineShift": null
+          }
+        }
+      ]
+    },
+    "badge_comp": {
+      "id": "comp_badge",
+      "duration": 3.0,
+      "width": 400,
+      "height": 200,
+      "layers": [
+        {
+          "id": "badge_bg",
+          "type": "solid",
+          "name": "Badge Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 3.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [200, 100], "keyframes": null},
+            "position": {"value": [200, 100], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#ff6600"}
+        },
+        {
+          "id": "badge_text",
+          "type": "text",
+          "name": "Badge Text",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 3.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [200, 100], "keyframes": null},
+            "position": {"value": [200, 100], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {
+            "text": "NEW!",
+            "fontId": null,
+            "fontSize": 48,
+            "color": "#ffffff",
+            "tracking": null,
+            "leading": null,
+            "alignment": "center",
+            "baselineShift": null
+          }
+        }
+      ]
+    },
+    "footer_comp": {
+      "id": "comp_footer",
+      "duration": 5.0,
+      "width": 1920,
+      "height": 200,
+      "layers": [
+        {
+          "id": "footer_line",
+          "type": "shape",
+          "name": "Footer Line",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 5.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 50, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 50], "keyframes": null},
+            "position": {"value": [960, 50], "keyframes": null},
+            "scale": {
+              "value": [0, 100],
+              "keyframes": [
+                {"time": 2, "value": [0, 100], "easing": "easeOutCubic"},
+                {"time": 3, "value": [100, 100]}
+              ]
+            },
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "Line",
+              "size": [1920, 4],
+              "position": [0, 0],
+              "roundness": 0,
+              "color": "#ffffff",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ]
+        },
+        {
+          "id": "footer_text",
+          "type": "text",
+          "name": "Footer Text",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 5.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              {"time": 3, "value": 0, "easing": "linear"},
+              {"time": 4, "value": 70}
+            ]
+          },
+          "transform": {
+            "anchor": {"value": [960, 120], "keyframes": null},
+            "position": {"value": [960, 120], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {
+            "text": "Powered by OutoCut",
+            "fontId": null,
+            "fontSize": 32,
+            "color": "#888888",
+            "tracking": null,
+            "leading": null,
+            "alignment": "center",
+            "baselineShift": null
+          }
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {"name": "youtube", "codec": "h264", "crf": 18, "preset": "slow"}
+  ]
+}

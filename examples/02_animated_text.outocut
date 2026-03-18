@@ -1,0 +1,108 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "name": "02_animated_text",
+    "created": "2026-03-18T00:00:00Z",
+    "author": "OutoCut Team",
+    "description": "Animated text with fade in - text animation example",
+    "tags": ["text", "animation", "tutorial"]
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 5.0,
+    "backgroundColor": "#1a1a2e",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 5.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "bg",
+          "type": "solid",
+          "name": "Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 5.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 540], "keyframes": null},
+            "position": {"value": [960, 540], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#1a1a2e"}
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "name": "Main Title",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 5.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              {"time": 0.5, "value": 0, "easing": "linear"},
+              {"time": 1.5, "value": 100, "easing": "easeOutCubic"}
+            ]
+          },
+          "transform": {
+            "anchor": {"value": [960, 540], "keyframes": null},
+            "position": {
+              "value": [960, 540],
+              "keyframes": [
+                {"time": 0, "value": [960, 600], "easing": "easeOutBack"},
+                {"time": 1.5, "value": [960, 540]}
+              ]
+            },
+            "scale": {
+              "value": [0, 0],
+              "keyframes": [
+                {"time": 0.5, "value": [0, 0], "easing": "easeOutBack"},
+                {"time": 1.5, "value": [100, 100]}
+              ]
+            },
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {
+            "text": "OUTOCUT",
+            "fontId": null,
+            "fontSize": 150,
+            "color": "#ffffff",
+            "tracking": null,
+            "leading": null,
+            "alignment": "center",
+            "baselineShift": null
+          }
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {"name": "youtube", "codec": "h264", "crf": 18, "preset": "slow"}
+  ]
+}

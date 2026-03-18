@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "name": "04_fade_in_out",
+    "created": "2026-03-18T00:00:00Z",
+    "author": "OutoCut Team",
+    "description": "Fade in and fade out animation example",
+    "tags": ["fade", "animation", "tutorial"]
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 10.0,
+    "backgroundColor": "#000000",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 10.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "bg",
+          "type": "solid",
+          "name": "Background",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 10.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {"value": 100, "keyframes": null},
+          "transform": {
+            "anchor": {"value": [960, 540], "keyframes": null},
+            "position": {"value": [960, 540], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {"color": "#1a1a2e"}
+        },
+        {
+          "id": "fade_text",
+          "type": "text",
+          "name": "Fade Text",
+          "enabled": true,
+          "startTime": 0,
+          "duration": 10.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              {"time": 0, "value": 0, "easing": "linear"},
+              {"time": 2, "value": 100, "easing": "easeOutCubic"},
+              {"time": 8, "value": 100, "easing": "easeInCubic"},
+              {"time": 10, "value": 0}
+            ]
+          },
+          "transform": {
+            "anchor": {"value": [960, 540], "keyframes": null},
+            "position": {"value": [960, 540], "keyframes": null},
+            "scale": {"value": [100, 100], "keyframes": null},
+            "rotation": {"value": 0, "keyframes": null},
+            "skew": {"value": [0, 0], "keyframes": null},
+            "skewAxis": {"value": 0, "keyframes": null}
+          },
+          "content": {
+            "text": "FADE IN • FADE OUT",
+            "fontId": null,
+            "fontSize": 80,
+            "color": "#ffffff",
+            "tracking": null,
+            "leading": null,
+            "alignment": "center",
+            "baselineShift": null
+          }
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {"name": "youtube", "codec": "h264", "crf": 18, "preset": "slow"}
+  ]
+}

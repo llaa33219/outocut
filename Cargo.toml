@@ -1,0 +1,40 @@
+[package]
+name = "outocut"
+version = "0.1.0"
+edition = "2021"
+authors = ["OutoCut Team"]
+description = "AI-friendly video editor - CLI tool for motion graphics and video editing"
+license = "MIT"
+repository = "https://github.com/outocut/outocut"
+rust-version = "1.75"
+
+[[bin]]
+name = "outocut"
+path = "src/main.rs"
+
+[lib]
+name = "outocut"
+path = "src/lib.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive", "env"] }
+clap_complete = "4.5"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.36", features = ["full"] }
+notify = "6.1"
+thiserror = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.7", features = ["v4", "serde"] }
+regex = "1.10"
+dirs = "5.0"
+image = "0.24"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
