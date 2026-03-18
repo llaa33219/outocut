@@ -1,6 +1,6 @@
 # Contributing Guide
 
-Guidelines for contributing to OutoCut.
+Guidelines for contributing to OutOcut.
 
 ## Getting Started
 

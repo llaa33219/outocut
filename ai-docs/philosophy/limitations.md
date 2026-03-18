@@ -167,7 +167,7 @@ These limitations will be addressed:
    - Import as video layer
 
 2. **Script generation**
-   - Generate OutoCut JSON from other tools
+   - Generate OutOcut JSON from other tools
    - Python/Rust scripts
 
 ## Reporting Issues

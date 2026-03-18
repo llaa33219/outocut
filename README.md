@@ -1,7 +1,7 @@
-# OutoCut
+# OutOcut
 
 <p align="center">
-  <img src="logo.svg" width="400" alt="OutoCut" />
+  <img src="logo.svg" width="400" alt="OutOcut" />
 </p>
 
 AI-friendly video editor - The CLI tool for motion graphics and video editing.
@@ -10,7 +10,7 @@ AI-friendly video editor - The CLI tool for motion graphics and video editing.
 
 ## Philosophy
 
-OutoCut is built on a simple premise: **video editing should be as easy as writing code**.
+OutOcut is built on a simple premise: **video editing should be as easy as writing code**.
 
 Every aspect of your project is data. Every animation is reproducible. Every frame is deterministic.
 
@@ -88,7 +88,7 @@ outocut watch project.outocut
 
 ## File Format
 
-OutoCut projects are pure JSON files with `.outocut` extension. They support comments:
+OutOcut projects are pure JSON files with `.outocut` extension. They support comments:
 
 ```json
 {

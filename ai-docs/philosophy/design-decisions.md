@@ -92,7 +92,7 @@ Use FFmpeg via subprocess for final video encoding.
 - Well-tested and maintained
 
 **Focus**:
-- OutoCut focuses on composition/animation
+- OutOcut focuses on composition/animation
 - Encoding is a solved problem
 - No need to reinvent
 

@@ -1,10 +1,10 @@
 # Adding Features
 
-Guide for adding new features to OutoCut.
+Guide for adding new features to OutOcut.
 
 ## Overview
 
-This guide covers how to extend OutoCut with:
+This guide covers how to extend OutOcut with:
 - New layer types
 - New effects
 - New blend modes

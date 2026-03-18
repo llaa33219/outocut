@@ -1,6 +1,6 @@
 # Module Breakdown
 
-Detailed description of each module in OutoCut.
+Detailed description of each module in OutOcut.
 
 ## CLI Module (`src/cli.rs`)
 

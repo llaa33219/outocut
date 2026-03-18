@@ -1,6 +1,6 @@
 # Architecture Overview
 
-This document describes the high-level architecture of OutoCut.
+This document describes the high-level architecture of OutOcut.
 
 ## System Architecture
 

@@ -1,6 +1,6 @@
 # Coding Standards
 
-Coding conventions and standards for OutoCut.
+Coding conventions and standards for OutOcut.
 
 ## General Principles
 

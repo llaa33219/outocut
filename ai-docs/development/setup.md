@@ -1,6 +1,6 @@
 # Development Setup
 
-Guide for setting up OutoCut development environment.
+Guide for setting up OutOcut development environment.
 
 ## Prerequisites
 

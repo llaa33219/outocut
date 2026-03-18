@@ -66,7 +66,7 @@ TEMP_DIR=$(mktemp -d)
 cd "$TEMP_DIR"
 
 # Download
-echo "Downloading OutoCut ${VERSION}..."
+echo "Downloading OutOcut ${VERSION}..."
 curl -sL "$URL" -o "$BINARY"
 
 # Make executable

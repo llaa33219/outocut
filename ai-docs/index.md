@@ -1,6 +1,6 @@
-# OutoCut Developer Documentation
+# OutOcut Developer Documentation
 
-Comprehensive documentation for developers working on OutoCut.
+Comprehensive documentation for developers working on OutOcut.
 
 ## Quick Links
 

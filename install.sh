@@ -65,7 +65,7 @@ download_binary() {
     local arch=$2
     local version="${3:-latest}"
 
-    info "Downloading OutoCut ${version} for ${os}-${arch}..."
+    info "Downloading OutOcut ${version} for ${os}-${arch}..."
 
     # Determine file extension
     local ext="tar.gz"
@@ -133,7 +133,7 @@ setup_path() {
         local path_line="export PATH=\"${INSTALL_DIR}:\$PATH\""
         if ! grep -q "${INSTALL_DIR}" "$shell_rc" 2>/dev/null; then
             echo "" >> "$shell_rc"
-            echo "# OutoCut" >> "$shell_rc"
+            echo "# OutOcut" >> "$shell_rc"
             echo "${path_line}" >> "$shell_rc"
             info "Added ${INSTALL_DIR} to PATH in ${shell_rc}"
             info "Run 'source ${shell_rc}' or restart your terminal"

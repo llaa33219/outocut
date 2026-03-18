@@ -3,7 +3,7 @@
   "metadata": {
     "name": "10_nested_composition",
     "created": "2026-03-18T00:00:00Z",
-    "author": "OutoCut Team",
+    "author": "OutOcut Team",
     "description": "Nested composition example - pre-comp demo",
     "tags": ["composition", "nested", "precomp", "tutorial"]
   },
@@ -351,7 +351,7 @@
             "skewAxis": {"value": 0, "keyframes": null}
           },
           "content": {
-            "text": "Powered by OutoCut",
+            "text": "Powered by OutOcut",
             "fontId": null,
             "fontSize": 32,
             "color": "#888888",

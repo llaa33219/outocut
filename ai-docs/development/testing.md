@@ -1,6 +1,6 @@
 # Testing Guide
 
-Comprehensive testing guide for OutoCut.
+Comprehensive testing guide for OutOcut.
 
 ## Test Structure
 

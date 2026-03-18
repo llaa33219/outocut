@@ -1,6 +1,6 @@
 # Data Flow
 
-This document describes how data flows through the OutoCut system.
+This document describes how data flows through the OutOcut system.
 
 ## Data Flow Diagram
 

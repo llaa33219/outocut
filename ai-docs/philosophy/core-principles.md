@@ -1,12 +1,12 @@
 # Core Principles
 
-The fundamental principles that guide OutoCut development.
+The fundamental principles that guide OutOcut development.
 
 ## Principle 1: Everything is a Layer
 
 ### Definition
 
-Every visual or audio element in OutoCut is a **Layer**. This includes:
+Every visual or audio element in OutOcut is a **Layer**. This includes:
 - Video footage
 - Audio tracks
 - Images
