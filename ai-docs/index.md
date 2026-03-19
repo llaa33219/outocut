@@ -27,6 +27,8 @@ Comprehensive documentation for developers working on OutOcut.
 - [Blend Modes](usage/blend-modes.md)
 - [Track Matte](usage/track-matte.md)
 - [Best Practices](usage/best-practices.md)
+- [Production Review Guide](usage/review-guide.md)
+- [AI Agent Visual Self-Verification](usage/ai-agent-verify.md)
 
 ### Philosophy
 - [Core Principles](philosophy/core-principles.md)
@@ -76,7 +78,9 @@ ai-docs/
 │   ├── effects.md            ← Effect reference
 │   ├── blend-modes.md        ← Blend mode reference
 │   ├── track-matte.md        ← Track matte reference
-│   └── best-practices.md     ← Usage best practices
+│   ├── best-practices.md     ← Usage best practices
+│   ├── review-guide.md       ← Production review & QA checklist
+│   └── ai-agent-verify.md    ← AI agent visual self-verification
 └── maintenance/
     ├── ai-docs-update.md     ← Doc update process
     └── coding-standards.md   ← Coding conventions
