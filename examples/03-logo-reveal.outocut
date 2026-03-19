@@ -1,0 +1,422 @@
+{
+  // OutOcut Example: Logo Reveal - Geometric Logo Reveal
+  // Demonstrates: track matte alpha reveal, light sweep, glow
+  "version": "1.0",
+  "metadata": {
+    "name": "03-logo-reveal",
+    "created": "2026-03-19T00:00:00Z",
+    "author": "OutOcut Team",
+    "description": "Geometric logo reveal with track matte alpha and light sweep",
+    "tags": ["logo", "reveal", "geometric", "track matte"]
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 5.0,
+    "backgroundColor": "#0A0A0F",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 5.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "layer_bg",
+          "type": "solid",
+          "name": "Background",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 5.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": { "color": "#0A0A0F" },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_bg_particles",
+          "type": "shape",
+          "name": "Background Particles",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 5.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": {
+            "value": 20,
+            "keyframes": [
+              { "time": 0.0, "value": 0 },
+              { "time": 0.5, "value": 20 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [960, 540],
+              "keyframes": [
+                { "time": 0.0, "value": [960, 540], "easing": "linear" },
+                { "time": 5.0, "value": [1100, 540] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": {
+              "value": 0,
+              "keyframes": [
+                { "time": 0.0, "value": 0, "easing": "linear" },
+                { "time": 5.0, "value": 180 }
+              ]
+            },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle1",
+              "size": [4, 4],
+              "position": [-400, -200],
+              "roundness": null,
+              "color": "#3B82F6",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle2",
+              "size": [3, 3],
+              "position": [-200, -100],
+              "roundness": null,
+              "color": "#8B5CF6",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle3",
+              "size": [5, 5],
+              "position": [-350, 50],
+              "roundness": null,
+              "color": "#06B6D4",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_matte_shape",
+          "type": "shape",
+          "name": "Logo Matte Shape",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 2.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              { "time": 0.0, "value": 0, "easing": "linear" },
+              { "time": 0.3, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": { "value": [760, 440], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "LogoBase",
+              "size": [400, 200],
+              "position": [0, 0],
+              "roundness": 20,
+              "color": "#FFFFFF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "LogoCircle",
+              "size": [100, 100],
+              "position": [200, 100],
+              "roundness": null,
+              "color": "#FFFFFF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_logo_fill",
+          "type": "shape",
+          "name": "Logo Fill",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 2.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": "alpha",
+          "blendMode": "normal",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": { "value": [760, 440], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "FillRect",
+              "size": [400, 200],
+              "position": [0, 0],
+              "roundness": 20,
+              "color": "#1E3A5F",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "FillCircle",
+              "size": [100, 100],
+              "position": [200, 100],
+              "roundness": null,
+              "color": "#1E3A5F",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "logo_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": {
+                "radius": 16,
+                "color": "#3B82F6",
+                "opacity": 50,
+                "threshold": 10
+              },
+              "keyframes": {
+                "opacity": [
+                  { "time": 0.5, "value": 20 },
+                  { "time": 1.0, "value": 50 },
+                  { "time": 1.5, "value": 80 }
+                ]
+              }
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_light_sweep",
+          "type": "shape",
+          "name": "Light Sweep",
+          "enabled": true,
+          "startTime": 0.5,
+          "duration": 2.0,
+          "inPoint": 0.0,
+          "outPoint": 2.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": {
+            "value": 60,
+            "keyframes": [
+              { "time": 0.5, "value": 0 },
+              { "time": 0.7, "value": 60 },
+              { "time": 1.8, "value": 60 },
+              { "time": 2.0, "value": 0 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [-200, 540],
+              "keyframes": [
+                { "time": 0.5, "value": [-200, 540], "easing": "linear" },
+                { "time": 2.0, "value": [2200, 540] }
+              ]
+            },
+            "scale": { "value": [200, 400], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "Sweep",
+              "size": [200, 200],
+              "position": [0, 0],
+              "roundness": 0,
+              "color": "#FFFFFF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_company_name",
+          "type": "text",
+          "name": "Company Name",
+          "enabled": true,
+          "startTime": 2.0,
+          "duration": 3.0,
+          "inPoint": 0.0,
+          "outPoint": 3.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 2.0, "value": 0, "easing": "easeOut" },
+              { "time": 2.4, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": {
+              "value": [960, 700],
+              "keyframes": [
+                { "time": 2.0, "value": [960, 750], "easing": "easeOutCubic" },
+                { "time": 2.4, "value": [960, 700] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "BLOUPLANET",
+            "fontId": null,
+            "fontSize": 42,
+            "color": "#F7FAFF",
+            "tracking": 16,
+            "leading": 52,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": [
+            {
+              "id": "name_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": {
+                "radius": 12,
+                "color": "#3B82F6",
+                "opacity": 40,
+                "threshold": 30
+              },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_tagline",
+          "type": "text",
+          "name": "Tagline",
+          "enabled": true,
+          "startTime": 2.5,
+          "duration": 2.5,
+          "inPoint": 0.0,
+          "outPoint": 2.5,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 2.5, "value": 0, "easing": "easeOut" },
+              { "time": 2.8, "value": 80 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 760], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "MOTION DESIGN STUDIO",
+            "fontId": null,
+            "fontSize": 18,
+            "color": "#64748B",
+            "tracking": 8,
+            "leading": 24,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {
+      "name": "preview",
+      "codec": "h264",
+      "crf": 18,
+      "preset": "medium"
+    }
+  ]
+}

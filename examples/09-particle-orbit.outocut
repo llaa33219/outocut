@@ -1,0 +1,1282 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "name": "Abstract Particle Orbit",
+    "created": "2026-03-19T00:00:00Z",
+    "author": "OpenCode",
+    "description": "Mesmerizing abstract particle orbit with layered trails and glowing orbital systems.",
+    "tags": ["abstract", "particles", "orbit", "motion", "example"]
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 8.0,
+    "backgroundColor": "#050510",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 8.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "bg_space",
+          "type": "solid",
+          "name": "Space Background",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": { "color": "#050510" },
+          "shapeContents": null,
+          "effects": [
+            {
+              "id": "fx_bg_vignette",
+              "type": "vignette",
+              "enabled": true,
+              "params": { "amount": 0.24, "roundness": 0.7 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "center_orb_core",
+          "type": "shape",
+          "name": "Center Orb Core",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 0.0, "value": [100, 100], "easing": "easeInOutCubic" },
+                { "time": 1.0, "value": [120, 120], "easing": "easeInOutCubic" },
+                { "time": 2.0, "value": [100, 100], "easing": "easeInOutCubic" },
+                { "time": 3.0, "value": [120, 120], "easing": "easeInOutCubic" },
+                { "time": 4.0, "value": [100, 100], "easing": "easeInOutCubic" },
+                { "time": 5.0, "value": [120, 120], "easing": "easeInOutCubic" },
+                { "time": 6.0, "value": [100, 100], "easing": "easeInOutCubic" },
+                { "time": 7.0, "value": [120, 120], "easing": "easeInOutCubic" },
+                { "time": 8.0, "value": [100, 100] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "OrbCoreCircle",
+              "size": [84, 84],
+              "position": [918, 498],
+              "roundness": null,
+              "color": "#87B8FF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "OrbCoreFill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#87B8FF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_orb_core_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 28, "color": "#75AFFF", "opacity": 62 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "center_orb_halo",
+          "type": "shape",
+          "name": "Center Orb Halo",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": { "value": 52, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 0.0, "value": [105, 105], "easing": "easeInOut" },
+                { "time": 2.0, "value": [125, 125], "easing": "easeInOut" },
+                { "time": 4.0, "value": [105, 105], "easing": "easeInOut" },
+                { "time": 6.0, "value": [125, 125], "easing": "easeInOut" },
+                { "time": 8.0, "value": [105, 105] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "OrbHaloCircle",
+              "size": [150, 150],
+              "position": [885, 465],
+              "roundness": null,
+              "color": "#4A86E8",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "OrbHaloFill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#4A86E8",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_orb_halo_glow",
+              "type": "outerGlow",
+              "enabled": true,
+              "params": { "radius": 72, "color": "#4876D6", "opacity": 38 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+
+        {
+          "id": "orbit_ctrl_01",
+          "type": "null",
+          "name": "Orbit Controller 01",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": {
+              "value": 0,
+              "keyframes": [
+                { "time": 0.0, "value": 0, "easing": "linear" },
+                { "time": 8.0, "value": 720 }
+              ]
+            },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "orbit_ctrl_02",
+          "type": "null",
+          "name": "Orbit Controller 02",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": {
+              "value": 0,
+              "keyframes": [
+                { "time": 0.0, "value": 20, "easing": "linear" },
+                { "time": 8.0, "value": -460 }
+              ]
+            },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "orbit_ctrl_03",
+          "type": "null",
+          "name": "Orbit Controller 03",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": null,
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": {
+              "value": 0,
+              "keyframes": [
+                { "time": 0.0, "value": -32, "easing": "linear" },
+                { "time": 8.0, "value": 288 }
+              ]
+            },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+
+        {
+          "id": "ring_01",
+          "type": "shape",
+          "name": "Orbit Ring 01",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_01",
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 52, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 10, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Ring01Path",
+              "size": [440, 300],
+              "position": [740, 390],
+              "roundness": null,
+              "color": "#86A8E7",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "stroke",
+              "name": "Ring01Stroke",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#86A8E7",
+              "width": 2,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_ring01_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 14, "color": "#7EA0E0", "opacity": 34 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "ring_02",
+          "type": "shape",
+          "name": "Orbit Ring 02",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_02",
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 46, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": -18, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Ring02Path",
+              "size": [640, 420],
+              "position": [640, 330],
+              "roundness": null,
+              "color": "#5B87C8",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "stroke",
+              "name": "Ring02Stroke",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#5B87C8",
+              "width": 2,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_ring02_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 16, "color": "#5B87C8", "opacity": 30 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "ring_03",
+          "type": "shape",
+          "name": "Orbit Ring 03",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_03",
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 40, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 34, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Ring03Path",
+              "size": [840, 560],
+              "position": [540, 260],
+              "roundness": null,
+              "color": "#4569A6",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "stroke",
+              "name": "Ring03Stroke",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#4569A6",
+              "width": 2,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_ring03_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 18, "color": "#4569A6", "opacity": 26 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+
+        {
+          "id": "connector_01",
+          "type": "shape",
+          "name": "Connector 01",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_01",
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 38, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "ConnectorRect01",
+              "size": [220, 2],
+              "position": [1070, 539],
+              "roundness": 2,
+              "color": "#8DB1F0",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "ConnectorFill01",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#8DB1F0",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_connector01_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 8, "color": "#8DB1F0", "opacity": 40 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "connector_02",
+          "type": "shape",
+          "name": "Connector 02",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_02",
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 32, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "ConnectorRect02",
+              "size": [320, 2],
+              "position": [1120, 539],
+              "roundness": 2,
+              "color": "#6C98D8",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "ConnectorFill02",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#6C98D8",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_connector02_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 8, "color": "#6C98D8", "opacity": 36 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "connector_03",
+          "type": "shape",
+          "name": "Connector 03",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_03",
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 26, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "ConnectorRect03",
+              "size": [420, 2],
+              "position": [1170, 539],
+              "roundness": 2,
+              "color": "#5377B5",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "ConnectorFill03",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#5377B5",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_connector03_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 10, "color": "#5377B5", "opacity": 32 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+
+        {
+          "id": "particle_01_main",
+          "type": "shape",
+          "name": "Particle 01 Main",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_01",
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1173, 530], "keyframes": null },
+            "position": { "value": [1173, 530], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle01Path",
+              "size": [14, 14],
+              "position": [1166, 523],
+              "roundness": null,
+              "color": "#B3D4FF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "Particle01Fill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#B3D4FF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_particle01_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 14, "color": "#A5CAFF", "opacity": 54 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "particle_01_trail_a",
+          "type": "shape",
+          "name": "Particle 01 Trail A",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_01",
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": { "value": 48, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1158, 530], "keyframes": null },
+            "position": { "value": [1158, 530], "keyframes": null },
+            "scale": { "value": [88, 88], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle01TrailAPath",
+              "size": [14, 14],
+              "position": [1151, 523],
+              "roundness": null,
+              "color": "#9AC0F9",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "Particle01TrailAFill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#9AC0F9",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_particle01_trail_a_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 12, "color": "#92B9F2", "opacity": 40 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "particle_01_trail_b",
+          "type": "shape",
+          "name": "Particle 01 Trail B",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_01",
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": { "value": 26, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1143, 530], "keyframes": null },
+            "position": { "value": [1143, 530], "keyframes": null },
+            "scale": { "value": [76, 76], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle01TrailBPath",
+              "size": [14, 14],
+              "position": [1136, 523],
+              "roundness": null,
+              "color": "#7BA8E6",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "Particle01TrailBFill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#7BA8E6",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_particle01_trail_b_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 10, "color": "#7BA8E6", "opacity": 28 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+
+        {
+          "id": "particle_02_main",
+          "type": "shape",
+          "name": "Particle 02 Main",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_02",
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": { "value": 96, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1278, 540], "keyframes": null },
+            "position": { "value": [1278, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle02Path",
+              "size": [12, 12],
+              "position": [1272, 534],
+              "roundness": null,
+              "color": "#96BEFF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "Particle02Fill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#96BEFF",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_particle02_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 12, "color": "#8DB6F8", "opacity": 48 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "particle_02_trail",
+          "type": "shape",
+          "name": "Particle 02 Trail",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_02",
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": { "value": 34, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1262, 540], "keyframes": null },
+            "position": { "value": [1262, 540], "keyframes": null },
+            "scale": { "value": [84, 84], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle02TrailPath",
+              "size": [12, 12],
+              "position": [1256, 534],
+              "roundness": null,
+              "color": "#7FA6E2",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "Particle02TrailFill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#7FA6E2",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_particle02_trail_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 10, "color": "#7FA6E2", "opacity": 26 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+
+        {
+          "id": "particle_03_main",
+          "type": "shape",
+          "name": "Particle 03 Main",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_03",
+          "trackMatte": null,
+          "blendMode": "add",
+          "opacity": { "value": 88, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1388, 548], "keyframes": null },
+            "position": { "value": [1388, 548], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle03Path",
+              "size": [10, 10],
+              "position": [1383, 543],
+              "roundness": null,
+              "color": "#82ABEB",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "Particle03Fill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#82ABEB",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_particle03_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 10, "color": "#7AA2E1", "opacity": 44 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "particle_03_minor",
+          "type": "shape",
+          "name": "Particle 03 Minor",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": "orbit_ctrl_03",
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 58, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1320, 620], "keyframes": null },
+            "position": { "value": [1320, 620], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle03MinorPath",
+              "size": [7, 7],
+              "position": [1316, 616],
+              "roundness": null,
+              "color": "#6C94D2",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "fill",
+              "name": "Particle03MinorFill",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#6C94D2",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "fx_particle03_minor_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": { "radius": 8, "color": "#6C94D2", "opacity": 28 },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+
+        {
+          "id": "bg_particle_01",
+          "type": "shape",
+          "name": "Background Particle 01",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 34, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [320, 220], "keyframes": null },
+            "position": {
+              "value": [320, 220],
+              "keyframes": [
+                { "time": 0.0, "value": [320, 220], "easing": "easeInOut" },
+                { "time": 4.0, "value": [340, 240], "easing": "easeInOut" },
+                { "time": 8.0, "value": [320, 220] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            { "type": "ellipse", "name": "BG01Path", "size": [5, 5], "position": [317, 217], "roundness": null, "color": "#7699D6", "width": null, "copies": null, "offset": null },
+            { "type": "fill", "name": "BG01Fill", "size": null, "position": null, "roundness": null, "color": "#7699D6", "width": null, "copies": null, "offset": null }
+          ],
+          "effects": [
+            { "id": "fx_bg01_glow", "type": "glow", "enabled": true, "params": { "radius": 6, "color": "#6C8ECC", "opacity": 26 }, "keyframes": null }
+          ],
+          "masks": null
+        },
+        {
+          "id": "bg_particle_02",
+          "type": "shape",
+          "name": "Background Particle 02",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 30, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [520, 860], "keyframes": null },
+            "position": {
+              "value": [520, 860],
+              "keyframes": [
+                { "time": 0.0, "value": [520, 860], "easing": "easeInOut" },
+                { "time": 4.0, "value": [500, 835], "easing": "easeInOut" },
+                { "time": 8.0, "value": [520, 860] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            { "type": "ellipse", "name": "BG02Path", "size": [6, 6], "position": [517, 857], "roundness": null, "color": "#6A8BC7", "width": null, "copies": null, "offset": null },
+            { "type": "fill", "name": "BG02Fill", "size": null, "position": null, "roundness": null, "color": "#6A8BC7", "width": null, "copies": null, "offset": null }
+          ],
+          "effects": [
+            { "id": "fx_bg02_glow", "type": "glow", "enabled": true, "params": { "radius": 6, "color": "#6A8BC7", "opacity": 24 }, "keyframes": null }
+          ],
+          "masks": null
+        },
+        {
+          "id": "bg_particle_03",
+          "type": "shape",
+          "name": "Background Particle 03",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 28, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1520, 180], "keyframes": null },
+            "position": {
+              "value": [1520, 180],
+              "keyframes": [
+                { "time": 0.0, "value": [1520, 180], "easing": "easeInOut" },
+                { "time": 4.0, "value": [1496, 200], "easing": "easeInOut" },
+                { "time": 8.0, "value": [1520, 180] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            { "type": "ellipse", "name": "BG03Path", "size": [4, 4], "position": [1518, 178], "roundness": null, "color": "#5E7FB8", "width": null, "copies": null, "offset": null },
+            { "type": "fill", "name": "BG03Fill", "size": null, "position": null, "roundness": null, "color": "#5E7FB8", "width": null, "copies": null, "offset": null }
+          ],
+          "effects": [
+            { "id": "fx_bg03_glow", "type": "glow", "enabled": true, "params": { "radius": 5, "color": "#5E7FB8", "opacity": 22 }, "keyframes": null }
+          ],
+          "masks": null
+        },
+        {
+          "id": "bg_particle_04",
+          "type": "shape",
+          "name": "Background Particle 04",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 26, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1760, 760], "keyframes": null },
+            "position": {
+              "value": [1760, 760],
+              "keyframes": [
+                { "time": 0.0, "value": [1760, 760], "easing": "easeInOut" },
+                { "time": 4.0, "value": [1732, 730], "easing": "easeInOut" },
+                { "time": 8.0, "value": [1760, 760] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            { "type": "ellipse", "name": "BG04Path", "size": [5, 5], "position": [1757, 757], "roundness": null, "color": "#5C7AB0", "width": null, "copies": null, "offset": null },
+            { "type": "fill", "name": "BG04Fill", "size": null, "position": null, "roundness": null, "color": "#5C7AB0", "width": null, "copies": null, "offset": null }
+          ],
+          "effects": [
+            { "id": "fx_bg04_glow", "type": "glow", "enabled": true, "params": { "radius": 6, "color": "#5C7AB0", "opacity": 22 }, "keyframes": null }
+          ],
+          "masks": null
+        },
+        {
+          "id": "bg_particle_05",
+          "type": "shape",
+          "name": "Background Particle 05",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 24, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [1120, 120], "keyframes": null },
+            "position": {
+              "value": [1120, 120],
+              "keyframes": [
+                { "time": 0.0, "value": [1120, 120], "easing": "easeInOut" },
+                { "time": 4.0, "value": [1146, 136], "easing": "easeInOut" },
+                { "time": 8.0, "value": [1120, 120] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            { "type": "ellipse", "name": "BG05Path", "size": [4, 4], "position": [1118, 118], "roundness": null, "color": "#5370A4", "width": null, "copies": null, "offset": null },
+            { "type": "fill", "name": "BG05Fill", "size": null, "position": null, "roundness": null, "color": "#5370A4", "width": null, "copies": null, "offset": null }
+          ],
+          "effects": [
+            { "id": "fx_bg05_glow", "type": "glow", "enabled": true, "params": { "radius": 5, "color": "#5370A4", "opacity": 22 }, "keyframes": null }
+          ],
+          "masks": null
+        },
+        {
+          "id": "bg_particle_06",
+          "type": "shape",
+          "name": "Background Particle 06",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 8.0,
+          "inPoint": 0.0,
+          "outPoint": 8.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": { "value": 22, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [220, 640], "keyframes": null },
+            "position": {
+              "value": [220, 640],
+              "keyframes": [
+                { "time": 0.0, "value": [220, 640], "easing": "easeInOut" },
+                { "time": 4.0, "value": [246, 620], "easing": "easeInOut" },
+                { "time": 8.0, "value": [220, 640] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            { "type": "ellipse", "name": "BG06Path", "size": [5, 5], "position": [217, 637], "roundness": null, "color": "#506B9D", "width": null, "copies": null, "offset": null },
+            { "type": "fill", "name": "BG06Fill", "size": null, "position": null, "roundness": null, "color": "#506B9D", "width": null, "copies": null, "offset": null }
+          ],
+          "effects": [
+            { "id": "fx_bg06_glow", "type": "glow", "enabled": true, "params": { "radius": 5, "color": "#506B9D", "opacity": 20 }, "keyframes": null }
+          ],
+          "masks": null
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {
+      "name": "youtube",
+      "codec": "h264",
+      "crf": 18,
+      "preset": "slow"
+    }
+  ]
+}

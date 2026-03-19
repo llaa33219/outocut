@@ -1,0 +1,553 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "name": "Broadcast Lower Thirds",
+    "created": "2026-03-19T00:00:00Z",
+    "author": "OutOcut Assistant",
+    "description": "Professional broadcast lower-thirds sequence with three timed speaker identifiers",
+    "tags": ["broadcast", "lower-third", "titles", "motion-graphics"]
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 12.0,
+    "backgroundColor": "#000000",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [
+    {
+      "id": "font_bold",
+      "type": "font",
+      "path": "./fonts/BroadcastSans-Bold.ttf",
+      "trimStart": null,
+      "trimEnd": null
+    },
+    {
+      "id": "font_regular",
+      "type": "font",
+      "path": "./fonts/BroadcastSans-Regular.ttf",
+      "trimStart": null,
+      "trimEnd": null
+    }
+  ],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 12.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "lt1_panel",
+          "type": "shape",
+          "name": "Lower Third 1 Panel",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [-620, 330],
+              "keyframes": [
+                { "time": 0.0, "value": [-1720, 330], "easing": "easeOutCubic" },
+                { "time": 2.0, "value": [-620, 330] },
+                { "time": 4.0, "value": [-620, 330], "easing": "easeInCubic" },
+                { "time": 6.0, "value": [1480, 330] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "Panel Base",
+              "size": [760, 170],
+              "position": [80, 840],
+              "roundness": 18,
+              "color": "#1E293B",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "stroke",
+              "name": "Panel Border",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#3B82F6",
+              "width": 3,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "lt1_shadow",
+              "type": "dropShadow",
+              "enabled": true,
+              "params": {
+                "color": "#000000",
+                "opacity": 35,
+                "distance": 6,
+                "angle": 135,
+                "blur": 14
+              },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "lt1_name",
+          "type": "text",
+          "name": "Lower Third 1 Name",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [-620, 390],
+              "keyframes": [
+                { "time": 0.0, "value": [-1720, 390], "easing": "easeOutCubic" },
+                { "time": 2.0, "value": [-620, 390] },
+                { "time": 4.0, "value": [-620, 390], "easing": "easeInCubic" },
+                { "time": 6.0, "value": [1480, 390] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "JOHN SMITH",
+            "fontId": "font_bold",
+            "fontSize": 54,
+            "color": "#FFFFFF",
+            "tracking": 2,
+            "leading": 60,
+            "alignment": "left",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "lt1_role",
+          "type": "text",
+          "name": "Lower Third 1 Role",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [0, 0],
+              "keyframes": [
+                { "time": 0.0, "value": [-1100, 0], "easing": "easeOutCubic" },
+                { "time": 2.0, "value": [0, 0] },
+                { "time": 4.0, "value": [0, 0], "easing": "easeInCubic" },
+                { "time": 6.0, "value": [2100, 0] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "Creative Director",
+            "fontId": "font_regular",
+            "fontSize": 34,
+            "color": "#3B82F6",
+            "tracking": 1,
+            "leading": 40,
+            "alignment": "left",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "lt2_panel",
+          "type": "shape",
+          "name": "Lower Third 2 Panel",
+          "enabled": true,
+          "startTime": 4.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [-620, 330],
+              "keyframes": [
+                { "time": 4.0, "value": [-1720, 330], "easing": "easeOutCubic" },
+                { "time": 6.0, "value": [-620, 330] },
+                { "time": 8.0, "value": [-620, 330], "easing": "easeInCubic" },
+                { "time": 10.0, "value": [1480, 330] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "Panel Base",
+              "size": [760, 170],
+              "position": [80, 840],
+              "roundness": 18,
+              "color": "#1E293B",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "stroke",
+              "name": "Panel Border",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#3B82F6",
+              "width": 3,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "lt2_shadow",
+              "type": "dropShadow",
+              "enabled": true,
+              "params": {
+                "color": "#000000",
+                "opacity": 35,
+                "distance": 6,
+                "angle": 135,
+                "blur": 14
+              },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "lt2_name",
+          "type": "text",
+          "name": "Lower Third 2 Name",
+          "enabled": true,
+          "startTime": 4.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [-620, 390],
+              "keyframes": [
+                { "time": 4.0, "value": [-1720, 390], "easing": "easeOutCubic" },
+                { "time": 6.0, "value": [-620, 390] },
+                { "time": 8.0, "value": [-620, 390], "easing": "easeInCubic" },
+                { "time": 10.0, "value": [1480, 390] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "SARAH JOHNSON",
+            "fontId": "font_bold",
+            "fontSize": 54,
+            "color": "#FFFFFF",
+            "tracking": 2,
+            "leading": 60,
+            "alignment": "left",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "lt2_role",
+          "type": "text",
+          "name": "Lower Third 2 Role",
+          "enabled": true,
+          "startTime": 4.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [0, 0],
+              "keyframes": [
+                { "time": 4.0, "value": [-1100, 0], "easing": "easeOutCubic" },
+                { "time": 6.0, "value": [0, 0] },
+                { "time": 8.0, "value": [0, 0], "easing": "easeInCubic" },
+                { "time": 10.0, "value": [2100, 0] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "Lead Designer",
+            "fontId": "font_regular",
+            "fontSize": 34,
+            "color": "#3B82F6",
+            "tracking": 1,
+            "leading": 40,
+            "alignment": "left",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "lt3_panel",
+          "type": "shape",
+          "name": "Lower Third 3 Panel",
+          "enabled": true,
+          "startTime": 8.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [-620, 330],
+              "keyframes": [
+                { "time": 8.0, "value": [-1720, 330], "easing": "easeOutCubic" },
+                { "time": 10.0, "value": [-620, 330] },
+                { "time": 12.0, "value": [-620, 330], "easing": "easeInCubic" },
+                { "time": 14.0, "value": [1480, 330] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "Panel Base",
+              "size": [760, 170],
+              "position": [80, 840],
+              "roundness": 18,
+              "color": "#1E293B",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "stroke",
+              "name": "Panel Border",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#3B82F6",
+              "width": 3,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "lt3_shadow",
+              "type": "dropShadow",
+              "enabled": true,
+              "params": {
+                "color": "#000000",
+                "opacity": 35,
+                "distance": 6,
+                "angle": 135,
+                "blur": 14
+              },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "lt3_name",
+          "type": "text",
+          "name": "Lower Third 3 Name",
+          "enabled": true,
+          "startTime": 8.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [-620, 390],
+              "keyframes": [
+                { "time": 8.0, "value": [-1720, 390], "easing": "easeOutCubic" },
+                { "time": 10.0, "value": [-620, 390] },
+                { "time": 12.0, "value": [-620, 390], "easing": "easeInCubic" },
+                { "time": 14.0, "value": [1480, 390] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "MIKE CHEN",
+            "fontId": "font_bold",
+            "fontSize": 54,
+            "color": "#FFFFFF",
+            "tracking": 2,
+            "leading": 60,
+            "alignment": "left",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "lt3_role",
+          "type": "text",
+          "name": "Lower Third 3 Role",
+          "enabled": true,
+          "startTime": 8.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": null
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": {
+              "value": [0, 0],
+              "keyframes": [
+                { "time": 8.0, "value": [-1100, 0], "easing": "easeOutCubic" },
+                { "time": 10.0, "value": [0, 0] },
+                { "time": 12.0, "value": [0, 0], "easing": "easeInCubic" },
+                { "time": 14.0, "value": [2100, 0] }
+              ]
+            },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "Senior Developer",
+            "fontId": "font_regular",
+            "fontSize": 34,
+            "color": "#3B82F6",
+            "tracking": 1,
+            "leading": 40,
+            "alignment": "left",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {
+      "name": "broadcast-h264",
+      "codec": "h264",
+      "crf": 18,
+      "preset": "slow"
+    }
+  ]
+}

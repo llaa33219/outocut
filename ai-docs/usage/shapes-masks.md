@@ -36,6 +36,8 @@ Shapes and masks are layer-level vector constructs:
 
 ### ShapeContent structure
 
+> **Coordinate Reference**: Shape positions use top-left origin `(0,0)`. For full details, see [Coordinate System](coordinate-system.md).
+
 Each item in `shapeContents` is a `ShapeContent` object:
 
 ```json
@@ -56,13 +58,36 @@ Each item in `shapeContents` is a `ShapeContent` object:
 |---|---|---|---|
 | `type` | `ShapeType` | Yes | Shape primitive/operator type |
 | `name` | `string` | No | Human-readable label |
-| `size` | `[number, number]` | No | Width/height tuple |
-| `position` | `[number, number]` | No | Local x/y offset |
+| `size` | `[number, number]` | No | Width/height tuple (from top-left of shape) |
+| `position` | `[number, number]` | No | Offset from shape layer origin `(0,0)` — top-left origin |
 | `roundness` | `number` | No | Rectangle corner radius |
 | `color` | `string` | No | Hex color (`#RRGGBB` or renderer-supported variant) |
 | `width` | `number` | No | Stroke width |
 | `copies` | `integer` | No | Repeater copy count |
 | `offset` | `[number, number]` | No | Repeater x/y step offset |
+
+### Position Field Details
+
+`position` defines the shape's offset within the shape layer's local coordinate space:
+
+```
+┌─────────────────────────────────────────────┐
+│  Shape Layer Space                          │
+│                                             │
+│  (0,0) ───────────────────────── (size[0], 0)│
+│    │                                        │  │
+│    │  ┌──────────────────────┐              │  │
+│    │  │     Shape            │              │  │
+│    │  │  position: [50,30]   │              │  │
+│    │  │                      │              │  │
+│    │  └──────────────────────┘              │  │
+│    │                                        │  │
+│  (0,size[1])                   (size[0],size[1])│
+└─────────────────────────────────────────────┘
+
+position[0] = X offset from layer left edge
+position[1] = Y offset from layer top edge
+```
 
 ### Shape layer usage
 
@@ -282,11 +307,14 @@ Use these as drop-in `shapeContents` entries.
 
 ### Practical tips for shapes
 
+> **Coordinate system**: Shape positions use **layer space** (relative to shape layer origin). Origin is top-left `(0,0)`. Shape expands rightward (+) and downward (+).
+
 - Keep `size` and `position` explicit for predictable layout.
 - Use uppercase hex (`#RRGGBB`) for readability and consistency.
 - Prefer one layer for related vectors; split layers when timing/effects differ.
 - Put style operators (`fill`, `stroke`) close to related geometry in your shape array.
 - Use `repeater` with small offsets first, then increase gradually to avoid accidental off-canvas copies.
+- Remember: `position` is relative to the layer's top-left, not absolute on the canvas.
 
 ---
 
@@ -335,12 +363,14 @@ Each mask object in `layer.masks`:
 
 ### MaskPoint structure
 
+> **Coordinate Reference**: Mask coordinates use **composition space** (absolute positions on canvas), NOT layer space. Top-left origin `(0,0)`. See [Coordinate System](coordinate-system.md) for full details.
+
 Each point in `mask.path`:
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `x` | `number` | Yes | Point X coordinate |
-| `y` | `number` | Yes | Point Y coordinate |
+| `x` | `number` | Yes | X position from composition left edge |
+| `y` | `number` | Yes | Y position from composition top edge |
 | `handleIn` | `[number, number] \| null` | No | Incoming bezier tangent offset |
 | `handleOut` | `[number, number] \| null` | No | Outgoing bezier tangent offset |
 
@@ -354,6 +384,35 @@ Mask point example:
   "handleOut": [40, -20]
 }
 ```
+
+### Mask Coordinate Space
+
+Masks use **composition space**, meaning coordinates are absolute positions on the canvas, not relative to the layer position. This allows masks to be defined independently of layer transforms.
+
+```
+┌─────────────────────────────────────────────────┐
+│  Composition Space (1920×1080)                   │
+│                                                 │
+│  (0,0)                                          │
+│    │                                            │
+│    │  ┌─────────────────────────────────────┐  │
+│    │  │  Layer                              │  │
+│    │  │                                     │  │
+│    │  │         Mask path:                  │  │
+│    │  │         (x:400, y:200)              │  │
+│    │  │              ●───────────────────   │  │
+│    │  │             /│                      │  │
+│    │  │            / │                      │  │
+│    │  │           ●  │                      │  │
+│    │  │              ●──────────────────    │  │
+│    │  │                                     │  │
+│    │  └─────────────────────────────────────┘  │
+│    │                                            │
+│                                                 │
+└─────────────────────────────────────────────────┘
+```
+
+> **Important**: Mask coordinates are absolute in composition space, NOT relative to layer position.
 
 ### Usage notes
 

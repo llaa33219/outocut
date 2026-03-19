@@ -1,0 +1,621 @@
+{
+  // OutOcut Example: Countdown Timer - Dramatic Countdown
+  // Demonstrates: scale bounce, glow pulses, flash effects
+  "version": "1.0",
+  "metadata": {
+    "name": "06-countdown-timer",
+    "created": "2026-03-19T00:00:00Z",
+    "author": "OutOcut Team",
+    "description": "Dramatic countdown timer with flash and glow effects",
+    "tags": ["countdown", "timer", "dramatic", "flash"]
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 7.0,
+    "backgroundColor": "#0D0D0D",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 7.0,
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "layer_bg",
+          "type": "solid",
+          "name": "Background",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 7.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": { "color": "#0D0D0D" },
+          "shapeContents": null,
+          "effects": [
+            {
+              "id": "noise_bg",
+              "type": "noise",
+              "enabled": true,
+              "params": {
+                "amount": 8,
+                "monochrome": true,
+                "seed": 42,
+                "animated": false
+              },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_flash_3",
+          "type": "solid",
+          "name": "Flash 3",
+          "enabled": true,
+          "startTime": 0.5,
+          "duration": 0.3,
+          "inPoint": 0.0,
+          "outPoint": 0.3,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              { "time": 0.5, "value": 0 },
+              { "time": 0.55, "value": 80 },
+              { "time": 0.8, "value": 0 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": { "color": "#FFFFFF" },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_num_3",
+          "type": "text",
+          "name": "Number 3",
+          "enabled": true,
+          "startTime": 0.5,
+          "duration": 1.5,
+          "inPoint": 0.0,
+          "outPoint": 1.5,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 0.5, "value": 0, "easing": "easeOut" },
+              { "time": 0.65, "value": 100 },
+              { "time": 1.7, "value": 100 },
+              { "time": 2.0, "value": 0, "easing": "easeIn" }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 0.5, "value": [0, 0], "easing": "easeOutElastic" },
+                { "time": 0.9, "value": [120, 120], "easing": "easeInOutCubic" },
+                { "time": 1.1, "value": [100, 100] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "3",
+            "fontId": null,
+            "fontSize": 300,
+            "color": "#3B82F6",
+            "tracking": 0,
+            "leading": 340,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": [
+            {
+              "id": "glow_3",
+              "type": "glow",
+              "enabled": true,
+              "params": {
+                "radius": 40,
+                "color": "#3B82F6",
+                "opacity": 70,
+                "threshold": 10
+              },
+              "keyframes": {
+                "opacity": [
+                  { "time": 0.5, "value": 30 },
+                  { "time": 0.8, "value": 80 },
+                  { "time": 1.5, "value": 60 }
+                ]
+              }
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_flash_2",
+          "type": "solid",
+          "name": "Flash 2",
+          "enabled": true,
+          "startTime": 2.0,
+          "duration": 0.3,
+          "inPoint": 0.0,
+          "outPoint": 0.3,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              { "time": 2.0, "value": 0 },
+              { "time": 2.05, "value": 80 },
+              { "time": 2.3, "value": 0 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": { "color": "#FFFFFF" },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_num_2",
+          "type": "text",
+          "name": "Number 2",
+          "enabled": true,
+          "startTime": 2.0,
+          "duration": 1.5,
+          "inPoint": 0.0,
+          "outPoint": 1.5,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 2.0, "value": 0, "easing": "easeOut" },
+              { "time": 2.15, "value": 100 },
+              { "time": 3.2, "value": 100 },
+              { "time": 3.5, "value": 0, "easing": "easeIn" }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 2.0, "value": [0, 0], "easing": "easeOutElastic" },
+                { "time": 2.4, "value": [120, 120], "easing": "easeInOutCubic" },
+                { "time": 2.6, "value": [100, 100] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "2",
+            "fontId": null,
+            "fontSize": 300,
+            "color": "#10B981",
+            "tracking": 0,
+            "leading": 340,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": [
+            {
+              "id": "glow_2",
+              "type": "glow",
+              "enabled": true,
+              "params": {
+                "radius": 40,
+                "color": "#10B981",
+                "opacity": 70,
+                "threshold": 10
+              },
+              "keyframes": {
+                "opacity": [
+                  { "time": 2.0, "value": 30 },
+                  { "time": 2.3, "value": 80 },
+                  { "time": 3.0, "value": 60 }
+                ]
+              }
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_flash_1",
+          "type": "solid",
+          "name": "Flash 1",
+          "enabled": true,
+          "startTime": 3.5,
+          "duration": 0.3,
+          "inPoint": 0.0,
+          "outPoint": 0.3,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              { "time": 3.5, "value": 0 },
+              { "time": 3.55, "value": 80 },
+              { "time": 3.8, "value": 0 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": { "color": "#FFFFFF" },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_num_1",
+          "type": "text",
+          "name": "Number 1",
+          "enabled": true,
+          "startTime": 3.5,
+          "duration": 1.5,
+          "inPoint": 0.0,
+          "outPoint": 1.5,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 3.5, "value": 0, "easing": "easeOut" },
+              { "time": 3.65, "value": 100 },
+              { "time": 4.7, "value": 100 },
+              { "time": 5.0, "value": 0, "easing": "easeIn" }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 3.5, "value": [0, 0], "easing": "easeOutElastic" },
+                { "time": 3.9, "value": [120, 120], "easing": "easeInOutCubic" },
+                { "time": 4.1, "value": [100, 100] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "1",
+            "fontId": null,
+            "fontSize": 300,
+            "color": "#F59E0B",
+            "tracking": 0,
+            "leading": 340,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": [
+            {
+              "id": "glow_1",
+              "type": "glow",
+              "enabled": true,
+              "params": {
+                "radius": 40,
+                "color": "#F59E0B",
+                "opacity": 70,
+                "threshold": 10
+              },
+              "keyframes": {
+                "opacity": [
+                  { "time": 3.5, "value": 30 },
+                  { "time": 3.8, "value": 80 },
+                  { "time": 4.5, "value": 60 }
+                ]
+              }
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_flash_go",
+          "type": "solid",
+          "name": "Flash GO",
+          "enabled": true,
+          "startTime": 5.0,
+          "duration": 0.5,
+          "inPoint": 0.0,
+          "outPoint": 0.5,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": {
+            "value": 0,
+            "keyframes": [
+              { "time": 5.0, "value": 0 },
+              { "time": 5.05, "value": 100 },
+              { "time": 5.5, "value": 0 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": { "color": "#FFFFFF" },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_go",
+          "type": "text",
+          "name": "GO Text",
+          "enabled": true,
+          "startTime": 5.0,
+          "duration": 2.0,
+          "inPoint": 0.0,
+          "outPoint": 2.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 5.0, "value": 0, "easing": "easeOut" },
+              { "time": 5.2, "value": 100 },
+              { "time": 6.5, "value": 100 },
+              { "time": 7.0, "value": 0 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [960, 540], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 5.0, "value": [0, 0], "easing": "easeOutBack" },
+                { "time": 5.5, "value": [150, 150], "easing": "easeInOutCubic" },
+                { "time": 5.8, "value": [130, 130], "easing": "easeInOutCubic" },
+                { "time": 6.1, "value": [140, 140] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "GO!",
+            "fontId": null,
+            "fontSize": 350,
+            "color": "#EF4444",
+            "tracking": 10,
+            "leading": 400,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": [
+            {
+              "id": "glow_go",
+              "type": "glow",
+              "enabled": true,
+              "params": {
+                "radius": 60,
+                "color": "#EF4444",
+                "opacity": 90,
+                "threshold": 5
+              },
+              "keyframes": {
+                "opacity": [
+                  { "time": 5.0, "value": 50 },
+                  { "time": 5.3, "value": 100 },
+                  { "time": 5.8, "value": 80 },
+                  { "time": 6.3, "value": 100 },
+                  { "time": 6.8, "value": 70 }
+                ]
+              }
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_particles",
+          "type": "shape",
+          "name": "Burst Particles",
+          "enabled": true,
+          "startTime": 5.0,
+          "duration": 2.0,
+          "inPoint": 0.0,
+          "outPoint": 2.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "screen",
+          "opacity": {
+            "value": 80,
+            "keyframes": [
+              { "time": 5.0, "value": 0 },
+              { "time": 5.1, "value": 80 },
+              { "time": 6.5, "value": 80 },
+              { "time": 7.0, "value": 0 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": { "value": [960, 540], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 5.0, "value": [50, 50], "easing": "easeOut" },
+                { "time": 7.0, "value": [300, 300] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "Particle1",
+              "size": [8, 8],
+              "position": [0, -200],
+              "roundness": null,
+              "color": "#EF4444",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle2",
+              "size": [6, 6],
+              "position": [150, -130],
+              "roundness": null,
+              "color": "#F97316",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle3",
+              "size": [7, 7],
+              "position": [200, 50],
+              "roundness": null,
+              "color": "#FBBF24",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle4",
+              "size": [5, 5],
+              "position": [130, 180],
+              "roundness": null,
+              "color": "#EF4444",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle5",
+              "size": [8, 8],
+              "position": [-50, 200],
+              "roundness": null,
+              "color": "#F97316",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle6",
+              "size": [6, 6],
+              "position": [-180, 80],
+              "roundness": null,
+              "color": "#FBBF24",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle7",
+              "size": [7, 7],
+              "position": [-170, -120],
+              "roundness": null,
+              "color": "#EF4444",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "Particle8",
+              "size": [5, 5],
+              "position": [-80, -180],
+              "roundness": null,
+              "color": "#F97316",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": null,
+          "masks": null
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {
+      "name": "countdown",
+      "codec": "h264",
+      "crf": 18,
+      "preset": "slow"
+    }
+  ]
+}

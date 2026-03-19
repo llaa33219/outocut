@@ -18,6 +18,15 @@ Comprehensive documentation for developers working on OutOcut.
 - [File Format Specification](usage/file-format.md)
 - [CLI Commands](usage/cli-commands.md)
 - [Usage Examples](usage/examples.md)
+- [Coordinate System](usage/coordinate-system.md)
+- [Transforms](usage/transforms.md)
+- [Shapes and Masks](usage/shapes-masks.md)
+- [Layer Types](usage/layer-types.md)
+- [Animation System](usage/animation-system.md)
+- [Effects](usage/effects.md)
+- [Blend Modes](usage/blend-modes.md)
+- [Track Matte](usage/track-matte.md)
+- [Best Practices](usage/best-practices.md)
 
 ### Philosophy
 - [Core Principles](philosophy/core-principles.md)
@@ -58,7 +67,16 @@ ai-docs/
 ├── usage/
 │   ├── file-format.md        ← .outocut spec
 │   ├── cli-commands.md        ← CLI reference
-│   └── examples.md            ← Usage examples
+│   ├── examples.md            ← Usage examples
+│   ├── coordinate-system.md   ← Coordinate system reference
+│   ├── transforms.md          ← Transform properties
+│   ├── shapes-masks.md       ← Shape and mask data
+│   ├── layer-types.md        ← Layer type reference
+│   ├── animation-system.md    ← Animation system
+│   ├── effects.md            ← Effect reference
+│   ├── blend-modes.md        ← Blend mode reference
+│   ├── track-matte.md        ← Track matte reference
+│   └── best-practices.md     ← Usage best practices
 └── maintenance/
     ├── ai-docs-update.md     ← Doc update process
     └── coding-standards.md   ← Coding conventions

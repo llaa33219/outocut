@@ -2,8 +2,22 @@
 
 Comprehensive reference for OutOcut layer transforms.
 
-- Author: BLOUplanet
-- License: Apache 2.0
+- **Author**: BLOUplanet
+- **License**: Apache 2.0
+- **Requires**: OutOcut v1.0+
+
+## Coordinate System
+
+OutOcut uses a standard 2D graphics coordinate system:
+
+| Property | Value |
+|----------|-------|
+| **Origin** | `(0, 0)` — top-left corner |
+| **X-axis** | Positive → right |
+| **Y-axis** | Positive ↓ down |
+| **Angle** | Positive ↻ clockwise |
+
+For full details, see [Coordinate System](coordinate-system.md).
 
 ## Overview
 
@@ -108,25 +122,51 @@ Visual intuition:
 
 ## Anchor (Transform Origin) Behavior
 
-`anchor` is the transform origin in layer-local coordinates.
+`anchor` is the transform origin in layer-local coordinates. It determines which point in the layer space is used as the pivot for scale, rotation, and skew operations.
 
-- if `anchor` is `[0, 0]`, transforms pivot around top-left of layer space
-- if `anchor` is `[width/2, height/2]`, transforms pivot around visual center
-- animating `anchor` creates moving-pivot effects
+**Coordinate space**: Layer space (relative to layer content, NOT composition)
 
-Center-anchor example for a 400x200 layer:
+| Anchor Value | Transform Origin |
+|--------------|-----------------|
+| `[0, 0]` | Top-left corner of layer |
+| `[width/2, height/2]` | Center of layer |
+| `[width, 0]` | Top-right corner |
+| `[0, height]` | Bottom-left corner |
+| `[width, height]` | Bottom-right corner |
 
 ```json
+// Center anchor for 400x200 layer
 "anchor": {
   "value": [200, 100],
   "keyframes": null
 }
 ```
 
-Visual description:
+### Visual interpretation
 
-- With anchor at center, a rotation looks like a clean spin.
-- With anchor at left edge, the same rotation looks like a swinging door.
+```
+Layer (400×200) with anchor at [0, 0] (top-left):
+
+(0,0)───────────────────────(400,0)
+ │                              │
+ │        anchor point           │
+ │            ●                  │
+ │                              │
+(0,200)─────────────────────(400,200)
+
+
+Layer (400×200) with anchor at [200, 100] (center):
+
+(0,0)───────────────────────(400,0)
+ │                              │
+ │           (200,100)          │
+ │              ●               │
+ │           anchor              │
+ │                              │
+(0,200)─────────────────────(400,200)
+```
+
+With anchor at center, a rotation looks like a clean spin. With anchor at left edge, the same rotation looks like a swinging door.
 
 ## Negative Scale and Flipping
 
@@ -252,9 +292,11 @@ Visual description:
 
 ## Practical Examples
 
+> **Coordinate Reference**: OutOcut uses top-left origin `(0,0)`. X increases rightward, Y increases downward. Center of a 1920×1080 composition is `[960, 540]`.
+
 ### 1) Center a layer
 
-For a 1920x1080 composition, center position is `[960, 540]`.
+For a 1920×1080 composition, center position is `[960, 540]`.
 
 ```json
 "transform": {
@@ -401,6 +443,7 @@ Visual description: shape leans in a directional way, useful for faux perspectiv
 - Very large scale values can introduce visible pixelation, especially raster media.
 - Keep anchor values intentional; many "wrong pivot" bugs are anchor issues, not rotation bugs.
 - Prefer parent controllers (`null` layers) when animating groups to keep timelines clean.
+- **Coordinate system**: OutOcut uses top-left origin `(0,0)`. X increases right, Y increases down. Always consider this when positioning layers — a `position` of `[0, 0]` places the layer's anchor at the top-left corner of the composition, not centered.
 
 ## Quick Copy Template
 

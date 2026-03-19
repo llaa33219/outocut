@@ -240,6 +240,8 @@ Complete base layer structure with all possible fields:
 
 Layer field reference:
 
+> **Coordinate System**: All position values use top-left origin `(0,0)`. See [Coordinate System](coordinate-system.md) for full details.
+
 | Field | Type | Required | Notes |
 |---|---|---|---|
 | `id` | `string` | Yes | Unique within the composition. |
@@ -254,11 +256,11 @@ Layer field reference:
 | `trackMatte` | `TrackMatte \| null` | No | Matte behavior. |
 | `blendMode` | `BlendMode \| null` | No | Blend operation. |
 | `opacity` | `AnimatedProperty<f64>` | Yes | Layer opacity value/keys. |
-| `transform` | `Transform` | Yes | Anchor/position/scale/rotation/skew/skewAxis. |
+| `transform` | `Transform` | Yes | Anchor/position/scale/rotation/skew/skewAxis. All position values use top-left origin. |
 | `content` | type-dependent object or `null` | Depends | Payload for non-shape layers. |
 | `shapeContents` | `ShapeContent[] \| null` | Shape layers | Shape stack. |
 | `effects` | `Effect[] \| null` | No | Layer effect stack. |
-| `masks` | `Mask[] \| null` | No | Layer masks. |
+| `masks` | `Mask[] \| null` | No | Layer masks. Mask coordinates are in composition space (absolute positions). |
 
 ### Type-specific `content` objects
 
@@ -1061,9 +1063,12 @@ This example demonstrates comments, all top-level sections, all layer types, ani
 
 ## Cautions
 
+> **Coordinate System**: OutOcut uses top-left origin `(0,0)`. X increases rightward, Y increases downward. See [Coordinate System](coordinate-system.md) for full details.
+
 - All IDs should be unique within the project (`assets[].id`, composition keys, composition `id`, and `layers[].id` per composition).
 - `mainCompositionId` must match a composition key exactly.
 - Asset `path` values are resolved relative to the project file location (recommended workflow).
 - All time/duration values are in seconds, not frames.
 - Keep `settings.duration` and main composition `duration` equal, or validation fails.
 - Enum strings are case-sensitive; use exact values from the schema tables above.
+- **Position values** (`position`, `anchor`, `shape.position`, `mask.path.x/y`) use top-left origin. A `position` of `[0, 0]` places the element at the top-left corner of the composition or layer.

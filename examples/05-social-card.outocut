@@ -1,0 +1,619 @@
+{
+  // OutOcut Example: Social Card - Social Media Post Card
+  // Demonstrates: avatar, stat bars, CTA button, staggered entrances
+  "version": "1.0",
+  "metadata": {
+    "name": "05-social-card",
+    "created": "2026-03-19T00:00:00Z",
+    "author": "OutOcut Team",
+    "description": "Eye-catching social media post card with animated elements",
+    "tags": ["social", "card", "stats", "animated"]
+  },
+  "settings": {
+    "width": 1080,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 6.0,
+    "backgroundColor": "#0F172A",
+    "pixelAspect": 1.0,
+    "sampleRate": 48000,
+    "audioChannels": 2
+  },
+  "assets": [],
+  "compositions": {
+    "main": {
+      "id": "comp_main",
+      "duration": 6.0,
+      "width": 1080,
+      "height": 1080,
+      "layers": [
+        {
+          "id": "layer_bg",
+          "type": "solid",
+          "name": "Background",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [540, 540], "keyframes": null },
+            "position": { "value": [540, 540], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": { "color": "#0F172A" },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_card",
+          "type": "shape",
+          "name": "Card",
+          "enabled": true,
+          "startTime": 0.0,
+          "duration": 6.0,
+          "inPoint": null,
+          "outPoint": null,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [540, 540], "keyframes": null },
+            "position": {
+              "value": [540, 540],
+              "keyframes": [
+                { "time": 0.0, "value": [540, 1200], "easing": "easeOutCubic" },
+                { "time": 0.3, "value": [540, 540] }
+              ]
+            },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 0.0, "value": [80, 80], "easing": "easeOutBack" },
+                { "time": 0.4, "value": [100, 100] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "CardBase",
+              "size": [900, 900],
+              "position": [0, 0],
+              "roundness": 40,
+              "color": "#1E293B",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "stroke",
+              "name": "CardBorder",
+              "size": null,
+              "position": null,
+              "roundness": null,
+              "color": "#3B82F6",
+              "width": 3,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "card_shadow",
+              "type": "dropShadow",
+              "enabled": true,
+              "params": {
+                "distance": 20,
+                "angle": 90,
+                "blur": 30,
+                "color": "#000000",
+                "opacity": 50
+              },
+              "keyframes": null
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_avatar_bg",
+          "type": "shape",
+          "name": "Avatar Background",
+          "enabled": true,
+          "startTime": 0.3,
+          "duration": 5.7,
+          "inPoint": 0.0,
+          "outPoint": 5.7,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 0.3, "value": 0, "easing": "easeOut" },
+              { "time": 0.6, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [75, 75], "keyframes": null },
+            "position": { "value": [540, 200], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 0.3, "value": [0, 0], "easing": "easeOutBack" },
+                { "time": 0.7, "value": [110, 110], "easing": "easeInOutCubic" },
+                { "time": 0.9, "value": [100, 100] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "ellipse",
+              "name": "AvatarCircle",
+              "size": [150, 150],
+              "position": [0, 0],
+              "roundness": null,
+              "color": "#334155",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "ellipse",
+              "name": "AvatarBorder",
+              "size": [150, 150],
+              "position": [0, 0],
+              "roundness": null,
+              "color": "#3B82F6",
+              "width": 5,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_avatar_initial",
+          "type": "text",
+          "name": "Avatar Initial",
+          "enabled": true,
+          "startTime": 0.5,
+          "duration": 5.5,
+          "inPoint": 0.0,
+          "outPoint": 5.5,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 0.5, "value": 0 },
+              { "time": 0.7, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [540, 540], "keyframes": null },
+            "position": { "value": [540, 215], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "A",
+            "fontId": null,
+            "fontSize": 72,
+            "color": "#F7FAFF",
+            "tracking": 0,
+            "leading": 80,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_user_name",
+          "type": "text",
+          "name": "User Name",
+          "enabled": true,
+          "startTime": 0.6,
+          "duration": 5.4,
+          "inPoint": 0.0,
+          "outPoint": 5.4,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 0.6, "value": 0, "easing": "easeOut" },
+              { "time": 0.9, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [540, 540], "keyframes": null },
+            "position": { "value": [540, 400], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "Alex Morgan",
+            "fontId": null,
+            "fontSize": 48,
+            "color": "#F7FAFF",
+            "tracking": 2,
+            "leading": 56,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_user_handle",
+          "type": "text",
+          "name": "User Handle",
+          "enabled": true,
+          "startTime": 0.8,
+          "duration": 5.2,
+          "inPoint": 0.0,
+          "outPoint": 5.2,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 0.8, "value": 0, "easing": "easeOut" },
+              { "time": 1.1, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [540, 540], "keyframes": null },
+            "position": { "value": [540, 460], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "@alexmorgan",
+            "fontId": null,
+            "fontSize": 28,
+            "color": "#64748B",
+            "tracking": 1,
+            "leading": 36,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_stat_bar_1",
+          "type": "shape",
+          "name": "Stat Bar 1",
+          "enabled": true,
+          "startTime": 1.2,
+          "duration": 4.8,
+          "inPoint": 0.0,
+          "outPoint": 4.8,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": { "value": [90, 560], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "BarBg",
+              "size": [900, 50],
+              "position": [0, 0],
+              "roundness": 25,
+              "color": "#334155",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "rect",
+              "name": "BarFill",
+              "size": [0, 50],
+              "position": [0, 0],
+              "roundness": 25,
+              "color": "#3B82F6",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_stat_label_1",
+          "type": "text",
+          "name": "Stat Label 1",
+          "enabled": true,
+          "startTime": 1.2,
+          "duration": 4.8,
+          "inPoint": 0.0,
+          "outPoint": 4.8,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 1.2, "value": 0 },
+              { "time": 1.4, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": { "value": [120, 560], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "Engagement: 75%",
+            "fontId": null,
+            "fontSize": 22,
+            "color": "#F7FAFF",
+            "tracking": 1,
+            "leading": 28,
+            "alignment": "left",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_stat_bar_2",
+          "type": "shape",
+          "name": "Stat Bar 2",
+          "enabled": true,
+          "startTime": 1.5,
+          "duration": 4.5,
+          "inPoint": 0.0,
+          "outPoint": 4.5,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": { "value": 100, "keyframes": null },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": { "value": [90, 660], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "BarBg",
+              "size": [900, 50],
+              "position": [0, 0],
+              "roundness": 25,
+              "color": "#334155",
+              "width": null,
+              "copies": null,
+              "offset": null
+            },
+            {
+              "type": "rect",
+              "name": "BarFill",
+              "size": [0, 50],
+              "position": [0, 0],
+              "roundness": 25,
+              "color": "#10B981",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_stat_label_2",
+          "type": "text",
+          "name": "Stat Label 2",
+          "enabled": true,
+          "startTime": 1.5,
+          "duration": 4.5,
+          "inPoint": 0.0,
+          "outPoint": 4.5,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 1.5, "value": 0 },
+              { "time": 1.7, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [0, 0], "keyframes": null },
+            "position": { "value": [120, 660], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "Growth: 92%",
+            "fontId": null,
+            "fontSize": 22,
+            "color": "#F7FAFF",
+            "tracking": 1,
+            "leading": 28,
+            "alignment": "left",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        },
+        {
+          "id": "layer_cta",
+          "type": "shape",
+          "name": "CTA Button",
+          "enabled": true,
+          "startTime": 2.0,
+          "duration": 4.0,
+          "inPoint": 0.0,
+          "outPoint": 4.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 2.0, "value": 0, "easing": "easeOut" },
+              { "time": 2.3, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [150, 40], "keyframes": null },
+            "position": { "value": [540, 850], "keyframes": null },
+            "scale": {
+              "value": [100, 100],
+              "keyframes": [
+                { "time": 2.0, "value": [90, 90], "easing": "easeOutBack" },
+                { "time": 2.4, "value": [100, 100] }
+              ]
+            },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": null,
+          "shapeContents": [
+            {
+              "type": "rect",
+              "name": "ButtonBg",
+              "size": [300, 80],
+              "position": [0, 0],
+              "roundness": 40,
+              "color": "#3B82F6",
+              "width": null,
+              "copies": null,
+              "offset": null
+            }
+          ],
+          "effects": [
+            {
+              "id": "cta_glow",
+              "type": "glow",
+              "enabled": true,
+              "params": {
+                "radius": 20,
+                "color": "#3B82F6",
+                "opacity": 60,
+                "threshold": 20
+              },
+              "keyframes": {
+                "opacity": [
+                  { "time": 2.5, "value": 40 },
+                  { "time": 3.0, "value": 80 },
+                  { "time": 3.5, "value": 50 },
+                  { "time": 4.0, "value": 60 }
+                ]
+              }
+            }
+          ],
+          "masks": null
+        },
+        {
+          "id": "layer_cta_text",
+          "type": "text",
+          "name": "CTA Text",
+          "enabled": true,
+          "startTime": 2.0,
+          "duration": 4.0,
+          "inPoint": 0.0,
+          "outPoint": 4.0,
+          "parentId": null,
+          "trackMatte": null,
+          "blendMode": "normal",
+          "opacity": {
+            "value": 100,
+            "keyframes": [
+              { "time": 2.0, "value": 0, "easing": "easeOut" },
+              { "time": 2.3, "value": 100 }
+            ]
+          },
+          "transform": {
+            "anchor": { "value": [540, 540], "keyframes": null },
+            "position": { "value": [540, 860], "keyframes": null },
+            "scale": { "value": [100, 100], "keyframes": null },
+            "rotation": { "value": 0, "keyframes": null },
+            "skew": { "value": [0, 0], "keyframes": null },
+            "skewAxis": { "value": 0, "keyframes": null }
+          },
+          "content": {
+            "text": "Learn More",
+            "fontId": null,
+            "fontSize": 28,
+            "color": "#FFFFFF",
+            "tracking": 2,
+            "leading": 36,
+            "alignment": "center",
+            "baselineShift": 0
+          },
+          "shapeContents": null,
+          "effects": null,
+          "masks": null
+        }
+      ]
+    }
+  },
+  "mainCompositionId": "main",
+  "exportPresets": [
+    {
+      "name": "social",
+      "codec": "h264",
+      "crf": 18,
+      "preset": "medium"
+    }
+  ]
+}
