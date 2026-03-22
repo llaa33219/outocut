@@ -6,6 +6,13 @@ Guide for maintaining AI documentation when code changes.
 
 When code changes, corresponding documentation in `ai-docs/` must be updated. This ensures AI agents can accurately understand and modify the codebase.
 
+Additionally, the `skill/` directory contains an agent skill with usage documentation for AI agents. When ai-docs are updated, corresponding changes must be applied to `skill/` as well:
+
+- `skill/SKILL.md` - Entry point (update if adding/removing rule files)
+- `skill/rules/*.md` - One-to-one mirror of relevant `ai-docs/usage/*.md` files
+
+The skill documentation is what AI agents actually read during code tasks, so it must be kept in sync with ai-docs.
+
 ## Why This Matters
 
 AI agents rely on documentation to:
@@ -28,14 +35,16 @@ Update ai-docs when changing:
 
 | Code Change | Documentation to Update |
 |-------------|------------------------|
-| New CLI command | `usage/cli-commands.md` |
+| New CLI command | `usage/cli-commands.md` + `skill/rules/cli-commands.md` |
 | New module | `architecture/modules.md` |
-| New layer type | `usage/file-format.md` |
-| New effect | `usage/file-format.md` |
-| New easing | `usage/file-format.md` |
+| New layer type | `usage/file-format.md` + `skill/rules/layer-types.md` |
+| New effect | `usage/effects.md` + `skill/rules/effects.md` |
+| New easing | `usage/animation-system.md` + `skill/rules/animation-system.md` |
 | Design change | `philosophy/design-decisions.md` |
 | Build process | `development/setup.md` |
 | Bug fix | `philosophy/limitations.md` (if affects users) |
+
+**Note:** The `skill/` directory is a subset of `ai-docs/usage/`. When updating usage documentation, always apply the same changes to the corresponding `skill/rules/` file.
 
 ## Update Process
 
@@ -69,7 +78,23 @@ vim ai-docs/usage/cli-commands.md
 # etc.
 ```
 
-### Step 4: Verify Consistency
+### Step 4: Sync to Skill
+
+After updating ai-docs, apply the same changes to the corresponding `skill/rules/` file:
+
+```bash
+# Example: CLI changes
+vim ai-docs/usage/cli-commands.md
+vim skill/rules/cli-commands.md
+
+# Example: Effect changes
+vim ai-docs/usage/effects.md
+vim skill/rules/effects.md
+```
+
+If adding a new file to ai-docs/usage/, create the corresponding `skill/rules/` file. Update `skill/SKILL.md` to include the new rule file in the list.
+
+### Step 5: Verify Consistency
 
 ```bash
 # Ensure docs are accurate
@@ -180,6 +205,9 @@ Before committing documentation updates:
 - [ ] Cross-references valid
 - [ ] No broken links
 - [ ] Typo check passed
+- [ ] `skill/` directory synced with corresponding ai-docs changes
+- [ ] New ai-docs files have corresponding `skill/rules/` entries
+- [ ] `skill/SKILL.md` updated if rule files added/removed
 
 ## Automation (Future)
 
