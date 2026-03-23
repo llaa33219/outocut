@@ -134,6 +134,10 @@ impl RenderEngine {
             Self::render_shapes(shape_contents, &mut layer_data, layer_width, layer_height)?;
         }
 
+        if let Some(effects) = &layer.effects {
+            Self::apply_effects(effects, &mut layer_data, layer_width, layer_height);
+        }
+
         Self::composite_layer(
             frame_data,
             &layer_data,
@@ -205,9 +209,269 @@ impl RenderEngine {
 
                     for y in 0..size.1 {
                         for x in 0..size.0 {
+                            let mut in_shape = true;
+                            if roundness > 0 {
+                                let r = roundness as i32;
+                                if x < roundness && y < roundness {
+                                    let dx = r as i32 - x as i32 - 1;
+                                    let dy = r as i32 - y as i32 - 1;
+                                    if dx * dx + dy * dy > r * r {
+                                        in_shape = false;
+                                    }
+                                }
+                                if x >= size.0 - roundness && y < roundness {
+                                    let dx = x as i32 - (size.0 - roundness) as i32;
+                                    let dy = r as i32 - y as i32 - 1;
+                                    if dx * dx + dy * dy > r * r {
+                                        in_shape = false;
+                                    }
+                                }
+                                if x < roundness && y >= size.1 - roundness {
+                                    let dx = r as i32 - x as i32 - 1;
+                                    let dy = y as i32 - (size.1 - roundness) as i32;
+                                    if dx * dx + dy * dy > r * r {
+                                        in_shape = false;
+                                    }
+                                }
+                                if x >= size.0 - roundness && y >= size.1 - roundness {
+                                    let dx = x as i32 - (size.0 - roundness) as i32;
+                                    let dy = y as i32 - (size.1 - roundness) as i32;
+                                    if dx * dx + dy * dy > r * r {
+                                        in_shape = false;
+                                    }
+                                }
+                            }
+
+                            if in_shape {
+                                let px = pos.0 + x as i32;
+                                let py = pos.1 + y as i32;
+                                if px >= 0 && (px as u32) < width && py >= 0 && (py as u32) < height {
+                                    let idx = ((py as u32 * width + px as u32) * 4) as usize;
+                                    if idx + 3 < data.len() {
+                                        data[idx] = color.0;
+                                        data[idx + 1] = color.1;
+                                        data[idx + 2] = color.2;
+                                        data[idx + 3] = color.3;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                ShapeType::Ellipse => {
+                    let size = shape.size.as_ref().map(|s| (s[0] as f64, s[1] as f64)).unwrap_or((100.0, 100.0));
+                    let pos = shape.position.as_ref().map(|p| (p[0] as f64, p[1] as f64)).unwrap_or((0.0, 0.0));
+                    let color = shape.color.as_ref().map(|c| hex_to_rgba(c)).unwrap_or((255, 255, 255, 255));
+
+                    let cx = size.0 / 2.0;
+                    let cy = size.1 / 2.0;
+                    let rx = cx;
+                    let ry = cy;
+
+                    for y in 0..size.1 as u32 {
+                        for x in 0..size.0 as u32 {
+                            let dx = x as f64 - rx;
+                            let dy = y as f64 - ry;
+                            // Ellipse equation: (x/a)^2 + (y/b)^2 <= 1
+                            let normalized = (dx * dx) / (rx * rx) + (dy * dy) / (ry * ry);
+                            if normalized <= 1.0 {
+                                let px = pos.0 as i32 + x as i32;
+                                let py = pos.1 as i32 + y as i32;
+                                if px >= 0 && (px as u32) < width && py >= 0 && (py as u32) < height {
+                                    let idx = ((py as u32 * width + px as u32) * 4) as usize;
+                                    if idx + 3 < data.len() {
+                                        data[idx] = color.0;
+                                        data[idx + 1] = color.1;
+                                        data[idx + 2] = color.2;
+                                        data[idx + 3] = color.3;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                ShapeType::Star => {
+                    let size = shape.size.as_ref().map(|s| (s[0] as f64, s[1] as f64)).unwrap_or((100.0, 100.0));
+                    let pos = shape.position.as_ref().map(|p| (p[0] as f64, p[1] as f64)).unwrap_or((0.0, 0.0));
+                    let color = shape.color.as_ref().map(|c| hex_to_rgba(c)).unwrap_or((255, 255, 255, 255));
+                    let points = shape.copies.unwrap_or(5) as i32;
+
+                    let cx = size.0 / 2.0;
+                    let cy = size.1 / 2.0;
+                    let outer_rx = cx;
+                    let outer_ry = cy;
+                    let inner_rx = cx * 0.4;
+                    let inner_ry = cy * 0.4;
+
+                    let mut star_pixels: Vec<(i32, i32)> = Vec::new();
+                    for i in 0..points {
+                        let angle1 = (i as f64 * 2.0 * std::f64::consts::PI / points as f64) - std::f64::consts::FRAC_PI_2;
+                        let angle2 = ((i as f64 + 0.5) * 2.0 * std::f64::consts::PI / points as f64) - std::f64::consts::FRAC_PI_2;
+
+                        let outer_x1 = cx + outer_rx * angle1.cos();
+                        let outer_y1 = cy + outer_ry * angle1.sin();
+                        let inner_x1 = cx + inner_rx * angle2.cos();
+                        let inner_y1 = cy + inner_ry * angle2.sin();
+
+                        let min_x = 0.0_f64.max(outer_x1.min(inner_x1) - 1.0);
+                        let max_x = size.0.min(outer_x1.max(inner_x1) + 1.0);
+                        let min_y = 0.0_f64.max(outer_y1.min(inner_y1) - 1.0);
+                        let max_y = size.1.min(outer_y1.max(inner_y1) + 1.0);
+
+                        for py in min_y as u32..max_y as u32 {
+                            for px in min_x as u32..max_x as u32 {
+                                let px_f = px as f64 + 0.5;
+                                let py_f = py as f64 + 0.5;
+                                let v0x = inner_x1 - outer_x1;
+                                let v0y = inner_y1 - outer_y1;
+                                let v1x = cx - outer_x1;
+                                let v1y = cy - outer_y1;
+                                let v2x = px_f - outer_x1;
+                                let v2y = py_f - outer_y1;
+
+                                let dot00 = v0x * v0x + v0y * v0y;
+                                let dot01 = v0x * v1x + v0y * v1y;
+                                let dot02 = v0x * v2x + v0y * v2y;
+                                let dot11 = v1x * v1x + v1y * v1y;
+                                let dot12 = v1x * v2x + v1y * v2y;
+
+                                let inv_denom = 1.0 / (dot00 * dot11 - dot01 * dot01);
+                                let u = (dot11 * dot02 - dot01 * dot12) * inv_denom;
+                                let v = (dot00 * dot12 - dot01 * dot02) * inv_denom;
+
+                                if u >= 0.0 && v >= 0.0 && (u + v) <= 1.0 {
+                                    star_pixels.push((px as i32, py as i32));
+                                }
+                            }
+                        }
+                    }
+
+                    star_pixels.sort();
+                    star_pixels.dedup();
+
+                    for (px, py) in star_pixels {
+                        let final_x = pos.0 as i32 + px;
+                        let final_y = pos.1 as i32 + py;
+                        if final_x >= 0 && (final_x as u32) < width && final_y >= 0 && (final_y as u32) < height {
+                            let idx = ((final_y as u32 * width + final_x as u32) * 4) as usize;
+                            if idx + 3 < data.len() {
+                                data[idx] = color.0;
+                                data[idx + 1] = color.1;
+                                data[idx + 2] = color.2;
+                                data[idx + 3] = color.3;
+                            }
+                        }
+                    }
+                }
+                ShapeType::Polygon => {
+                    let size = shape.size.as_ref().map(|s| (s[0] as f64, s[1] as f64)).unwrap_or((100.0, 100.0));
+                    let pos = shape.position.as_ref().map(|p| (p[0] as f64, p[1] as f64)).unwrap_or((0.0, 0.0));
+                    let color = shape.color.as_ref().map(|c| hex_to_rgba(c)).unwrap_or((255, 255, 255, 255));
+                    let sides = shape.copies.unwrap_or(6) as i32;
+
+                    let cx = size.0 / 2.0;
+                    let cy = size.1 / 2.0;
+                    let r = cx.min(cy) * 0.9;
+
+                    let mut poly_pixels: Vec<(i32, i32)> = Vec::new();
+
+                    for i in 0..sides {
+                        let angle1 = (i as f64 * 2.0 * std::f64::consts::PI / sides as f64) - std::f64::consts::FRAC_PI_2;
+                        let angle2 = ((i as f64 + 1.0) * 2.0 * std::f64::consts::PI / sides as f64) - std::f64::consts::FRAC_PI_2;
+
+                        let x1 = cx + r * angle1.cos();
+                        let y1 = cy + r * angle1.sin();
+                        let x2 = cx + r * angle2.cos();
+                        let y2 = cy + r * angle2.sin();
+
+                        let min_x = 0.0_f64.max(x1.min(x2).min(cx) - 1.0);
+                        let max_x = size.0.min(x1.max(x2).max(cx) + 1.0);
+                        let min_y = 0.0_f64.max(y1.min(y2).min(cy) - 1.0);
+                        let max_y = size.1.min(y1.max(y2).max(cy) + 1.0);
+
+                        for py in min_y as u32..max_y as u32 {
+                            for px in min_x as u32..max_x as u32 {
+                                let px_f = px as f64 + 0.5;
+                                let py_f = py as f64 + 0.5;
+                                let v0x = x2 - x1;
+                                let v0y = y2 - y1;
+                                let v1x = cx - x1;
+                                let v1y = cy - y1;
+                                let v2x = px_f - x1;
+                                let v2y = py_f - y1;
+
+                                let dot00 = v0x * v0x + v0y * v0y;
+                                let dot01 = v0x * v1x + v0y * v1y;
+                                let dot02 = v0x * v2x + v0y * v2y;
+                                let dot11 = v1x * v1x + v1y * v1y;
+                                let dot12 = v1x * v2x + v1y * v2y;
+
+                                let inv_denom = 1.0 / (dot00 * dot11 - dot01 * dot01);
+                                let u = (dot11 * dot02 - dot01 * dot12) * inv_denom;
+                                let v = (dot00 * dot12 - dot01 * dot02) * inv_denom;
+
+                                if u >= 0.0 && v >= 0.0 && (u + v) <= 1.0 {
+                                    poly_pixels.push((px as i32, py as i32));
+                                }
+                            }
+                        }
+                    }
+
+                    poly_pixels.sort();
+                    poly_pixels.dedup();
+
+                    for (px, py) in poly_pixels {
+                        let final_x = pos.0 as i32 + px;
+                        let final_y = pos.1 as i32 + py;
+                        if final_x >= 0 && (final_x as u32) < width && final_y >= 0 && (final_y as u32) < height {
+                            let idx = ((final_y as u32 * width + final_x as u32) * 4) as usize;
+                            if idx + 3 < data.len() {
+                                data[idx] = color.0;
+                                data[idx + 1] = color.1;
+                                data[idx + 2] = color.2;
+                                data[idx + 3] = color.3;
+                            }
+                        }
+                    }
+                }
+                ShapeType::Stroke => {
+                    let size = shape.size.as_ref().map(|s| (s[0] as u32, s[1] as u32)).unwrap_or((100, 100));
+                    let pos = shape.position.as_ref().map(|p| (p[0] as i32, p[1] as i32)).unwrap_or((0, 0));
+                    let stroke_width = shape.width.unwrap_or(1.0) as i32;
+                    let color = shape.color.as_ref().map(|c| hex_to_rgba(c)).unwrap_or((255, 255, 255, 255));
+
+                    for y in 0..size.1 {
+                        for x in 0..size.0 {
+                            let is_border = x < stroke_width as u32
+                                || x >= size.0 - stroke_width as u32
+                                || y < stroke_width as u32
+                                || y >= size.1 - stroke_width as u32;
+
+                            if is_border {
+                                let px = pos.0 + x as i32;
+                                let py = pos.1 + y as i32;
+                                if px >= 0 && (px as u32) < width && py >= 0 && (py as u32) < height {
+                                    let idx = ((py as u32 * width + px as u32) * 4) as usize;
+                                    if idx + 3 < data.len() {
+                                        data[idx] = color.0;
+                                        data[idx + 1] = color.1;
+                                        data[idx + 2] = color.2;
+                                        data[idx + 3] = color.3;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                ShapeType::Fill => {
+                    let size = shape.size.as_ref().map(|s| (s[0] as u32, s[1] as u32)).unwrap_or((width, height));
+                    let pos = shape.position.as_ref().map(|p| (p[0] as i32, p[1] as i32)).unwrap_or((0, 0));
+                    let color = shape.color.as_ref().map(|c| hex_to_rgba(c)).unwrap_or((255, 255, 255, 255));
+
+                    for y in 0..size.1.min(height) {
+                        for x in 0..size.0.min(width) {
                             let px = pos.0 + x as i32;
                             let py = pos.1 + y as i32;
-
                             if px >= 0 && (px as u32) < width && py >= 0 && (py as u32) < height {
                                 let idx = ((py as u32 * width + px as u32) * 4) as usize;
                                 if idx + 3 < data.len() {
@@ -220,11 +484,125 @@ impl RenderEngine {
                         }
                     }
                 }
-                _ => {}
+                ShapeType::Repeater => {
+                    let copies = shape.copies.unwrap_or(1).max(1) as usize;
+                    let offset = shape.offset.as_ref().map(|o| (o[0] as i32, o[1] as i32)).unwrap_or((50, 50));
+                    let base_shape_size = shape.size.as_ref().map(|s| (s[0] as u32, s[1] as u32)).unwrap_or((100, 100));
+                    let color = shape.color.as_ref().map(|c| hex_to_rgba(c)).unwrap_or((255, 255, 255, 255));
+
+                    for copy_idx in 0..copies {
+                        let copy_x = offset.0 * copy_idx as i32;
+                        let copy_y = offset.1 * copy_idx as i32;
+
+                        for y in 0..base_shape_size.1 {
+                            for x in 0..base_shape_size.0 {
+                                let px = copy_x + x as i32;
+                                let py = copy_y + y as i32;
+                                if px >= 0 && (px as u32) < width && py >= 0 && (py as u32) < height {
+                                    let idx = ((py as u32 * width + px as u32) * 4) as usize;
+                                    if idx + 3 < data.len() {
+                                        data[idx] = color.0;
+                                        data[idx + 1] = color.1;
+                                        data[idx + 2] = color.2;
+                                        data[idx + 3] = color.3;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                ShapeType::Group | ShapeType::Path => {
+                }
             }
         }
 
         Ok(())
+    }
+
+    fn apply_effects(
+        effects: &[Effect],
+        data: &mut [u8],
+        width: u32,
+        height: u32,
+    ) {
+        for effect in effects {
+            if !effect.enabled {
+                continue;
+            }
+
+            match effect.effect_type {
+                EffectType::Glow => {
+                    let radius = get_f64_param(&effect.params, "radius", 20.0) as i32;
+                    let color = get_color_param(&effect.params, "color", "#ffffff");
+                    let opacity = get_f64_param(&effect.params, "opacity", 50.0) / 100.0;
+                    let threshold = get_f64_param(&effect.params, "threshold", 0.0) / 100.0;
+
+                    apply_glow(data, width, height, radius, color, opacity, threshold);
+                }
+                EffectType::DropShadow => {
+                    let distance = get_f64_param(&effect.params, "distance", 10.0) as i32;
+                    let angle = get_f64_param(&effect.params, "angle", 45.0);
+                    let blur = get_f64_param(&effect.params, "blur", 5.0) as i32;
+                    let color = get_color_param(&effect.params, "color", "#000000");
+                    let opacity = get_f64_param(&effect.params, "opacity", 50.0) / 100.0;
+
+                    apply_drop_shadow(data, width, height, distance, angle, blur, color, opacity);
+                }
+                EffectType::GaussianBlur => {
+                    let radius = get_f64_param(&effect.params, "radius", 5.0) as i32;
+                    let iterations = get_i32_param(&effect.params, "iterations", 1);
+
+                    apply_gaussian_blur(data, width, height, radius, iterations);
+                }
+                EffectType::Vignette => {
+                    let amount = get_f64_param(&effect.params, "amount", 30.0) / 100.0;
+                    let size = get_f64_param(&effect.params, "size", 50.0) / 100.0;
+                    let feather = get_f64_param(&effect.params, "feather", 50.0) / 100.0;
+                    let color = get_color_param(&effect.params, "color", "#000000");
+
+                    apply_vignette(data, width, height, amount, size, feather, color);
+                }
+                EffectType::BrightnessContrast => {
+                    let brightness = get_f64_param(&effect.params, "brightness", 0.0) / 100.0;
+                    let contrast = get_f64_param(&effect.params, "contrast", 0.0) / 100.0;
+
+                    apply_brightness_contrast(data, width, height, brightness, contrast);
+                }
+                EffectType::HueSaturation => {
+                    let hue = get_f64_param(&effect.params, "hue", 0.0);
+                    let saturation = get_f64_param(&effect.params, "saturation", 0.0) / 100.0;
+
+                    apply_hue_saturation(data, width, height, hue, saturation);
+                }
+                EffectType::ColorCorrection => {
+                    let exposure = get_f64_param(&effect.params, "exposure", 0.0) / 100.0;
+                    let gamma = get_f64_param(&effect.params, "gamma", 1.0);
+                    let saturation = get_f64_param(&effect.params, "saturation", 0.0) / 100.0;
+
+                    apply_color_correction(data, width, height, exposure, gamma, saturation);
+                }
+                EffectType::Levels => {
+                    let black = get_f64_param(&effect.params, "black", 0.0) / 255.0;
+                    let white = get_f64_param(&effect.params, "white", 255.0) / 255.0;
+                    let gamma = get_f64_param(&effect.params, "gamma", 1.0);
+
+                    apply_levels(data, width, height, black, white, gamma);
+                }
+                EffectType::Noise => {
+                    let amount = get_f64_param(&effect.params, "amount", 10.0) / 100.0;
+                    let seed = get_i32_param(&effect.params, "seed", 0);
+
+                    apply_noise(data, width, height, amount, seed);
+                }
+                EffectType::Flip => {
+                    let horizontal = get_bool_param(&effect.params, "horizontal", false);
+                    let vertical = get_bool_param(&effect.params, "vertical", false);
+
+                    apply_flip(data, width, height, horizontal, vertical);
+                }
+                _ => {}
+            }
+        }
     }
 
     fn composite_layer(
@@ -347,6 +725,465 @@ fn hex_to_rgba(hex: &str) -> (u8, u8, u8, u8) {
         (r, g, b, a)
     } else {
         (0, 0, 0, 255)
+    }
+}
+
+fn get_f64_param(params: &serde_json::Value, name: &str, default: f64) -> f64 {
+    params.get(name).and_then(|v| v.as_f64()).unwrap_or(default)
+}
+
+fn get_i32_param(params: &serde_json::Value, name: &str, default: i32) -> i32 {
+    params.get(name).and_then(|v| v.as_i64()).unwrap_or(default as i64) as i32
+}
+
+fn get_bool_param(params: &serde_json::Value, name: &str, default: bool) -> bool {
+    params.get(name).and_then(|v| v.as_bool()).unwrap_or(default)
+}
+
+fn get_color_param(params: &serde_json::Value, name: &str, default: &str) -> String {
+    params.get(name).and_then(|v| v.as_str()).unwrap_or(default).to_string()
+}
+
+fn apply_glow(
+    data: &mut [u8],
+    width: u32,
+    height: u32,
+    radius: i32,
+    color: String,
+    opacity: f64,
+    threshold: f64,
+) {
+    let (cr, cg, cb, _) = hex_to_rgba(&color);
+    let mut blurred = data.to_vec();
+
+    box_blur(&data, &mut blurred, width, height, radius);
+
+    for y in 0..height {
+        for x in 0..width {
+            let idx = ((y * width + x) * 4) as usize;
+            if idx + 3 >= data.len() {
+                continue;
+            }
+
+            let alpha = data[idx + 3] as f64 / 255.0;
+            if alpha < threshold {
+                continue;
+            }
+
+            let blend = opacity * alpha;
+            data[idx] = (data[idx] as f64 * (1.0 - blend) + cr as f64 * blend) as u8;
+            data[idx + 1] = (data[idx + 1] as f64 * (1.0 - blend) + cg as f64 * blend) as u8;
+            data[idx + 2] = (data[idx + 2] as f64 * (1.0 - blend) + cb as f64 * blend) as u8;
+        }
+    }
+}
+
+fn apply_drop_shadow(
+    data: &mut [u8],
+    width: u32,
+    height: u32,
+    distance: i32,
+    angle: f64,
+    blur: i32,
+    color: String,
+    opacity: f64,
+) {
+    let (cr, cg, cb, _) = hex_to_rgba(&color);
+    let angle_rad = angle * std::f64::consts::PI / 180.0;
+    let offset_x = (distance as f64 * angle_rad.cos()) as i32;
+    let offset_y = (distance as f64 * angle_rad.sin()) as i32;
+
+    let mut shadow = vec![0u8; data.len()];
+
+    for y in 0..height {
+        for x in 0..width {
+            let src_idx = ((y * width + x) * 4) as usize;
+            if src_idx + 3 >= data.len() {
+                continue;
+            }
+
+            let alpha = data[src_idx + 3] as f64 / 255.0;
+            if alpha > 0.0 {
+                let dst_x = x as i32 + offset_x;
+                let dst_y = y as i32 + offset_y;
+
+                if dst_x >= 0 && (dst_x as u32) < width && dst_y >= 0 && (dst_y as u32) < height {
+                    let dst_idx = ((dst_y as u32 * width + dst_x as u32) * 4) as usize;
+                    if dst_idx + 3 < shadow.len() {
+                        shadow[dst_idx] = cr;
+                        shadow[dst_idx + 1] = cg;
+                        shadow[dst_idx + 2] = cb;
+                        shadow[dst_idx + 3] = (alpha * opacity * 255.0) as u8;
+                    }
+                }
+            }
+        }
+    }
+
+    if blur > 0 {
+        let mut blurred = vec![0u8; shadow.len()];
+        box_blur(&shadow, &mut blurred, width, height, blur);
+
+        for i in (0..data.len()).step_by(4) {
+            if i + 3 >= data.len() {
+                break;
+            }
+            if blurred[i + 3] > 0 {
+                let src_alpha = blurred[i + 3] as f64 / 255.0;
+                let dst_alpha = data[i + 3] as f64 / 255.0;
+                let out_alpha = src_alpha + dst_alpha * (1.0 - src_alpha);
+                if out_alpha > 0.0 {
+                    data[i] = ((blurred[i] as f64 * src_alpha + data[i] as f64 * dst_alpha * (1.0 - src_alpha)) / out_alpha) as u8;
+                    data[i + 1] = ((blurred[i + 1] as f64 * src_alpha + data[i + 1] as f64 * dst_alpha * (1.0 - src_alpha)) / out_alpha) as u8;
+                    data[i + 2] = ((blurred[i + 2] as f64 * src_alpha + data[i + 2] as f64 * dst_alpha * (1.0 - src_alpha)) / out_alpha) as u8;
+                    data[i + 3] = (out_alpha * 255.0) as u8;
+                }
+            }
+        }
+    } else {
+        for y in 0..height {
+            for x in 0..width {
+                let src_idx = idx_of(&shadow, x, y, width);
+                let dst_idx = idx_of(data, x, y, width);
+                if shadow[src_idx + 3] > 0 && data[dst_idx + 3] == 0 {
+                    data[dst_idx] = shadow[src_idx];
+                    data[dst_idx + 1] = shadow[src_idx + 1];
+                    data[dst_idx + 2] = shadow[src_idx + 2];
+                    data[dst_idx + 3] = shadow[src_idx + 3];
+                }
+            }
+        }
+    }
+}
+
+fn idx_of(data: &[u8], x: u32, y: u32, width: u32) -> usize {
+    ((y * width + x) * 4) as usize
+}
+
+fn box_blur(input: &[u8], output: &mut [u8], width: u32, height: u32, radius: i32) {
+    let r = radius.min(50);
+
+    for y in 0..height {
+        for x in 0..width {
+            let mut sum_r: f64 = 0.0;
+            let mut sum_g: f64 = 0.0;
+            let mut sum_b: f64 = 0.0;
+            let mut sum_a: f64 = 0.0;
+            let mut count: f64 = 0.0;
+
+            for dy in -r..=r {
+                for dx in -r..=r {
+                    let nx = x as i32 + dx;
+                    let ny = y as i32 + dy;
+
+                    if nx >= 0 && (nx as u32) < width && ny >= 0 && (ny as u32) < height {
+                        let idx = ((ny as u32 * width + nx as u32) * 4) as usize;
+                        if idx + 3 < input.len() {
+                            sum_r += input[idx] as f64;
+                            sum_g += input[idx + 1] as f64;
+                            sum_b += input[idx + 2] as f64;
+                            sum_a += input[idx + 3] as f64;
+                            count += 1.0;
+                        }
+                    }
+                }
+            }
+
+            let idx = ((y * width + x) * 4) as usize;
+            if idx + 3 < output.len() && count > 0.0 {
+                output[idx] = (sum_r / count) as u8;
+                output[idx + 1] = (sum_g / count) as u8;
+                output[idx + 2] = (sum_b / count) as u8;
+                output[idx + 3] = (sum_a / count) as u8;
+            }
+        }
+    }
+}
+
+fn apply_gaussian_blur(data: &mut [u8], width: u32, height: u32, radius: i32, iterations: i32) {
+    let r = (radius as f64 * 0.3).round() as i32;
+    if r < 1 {
+        return;
+    }
+
+    let mut temp = vec![0u8; data.len()];
+
+    for _ in 0..iterations {
+        box_blur(data, &mut temp, width, height, r);
+        box_blur(&temp, data, width, height, r);
+    }
+}
+
+fn apply_vignette(
+    data: &mut [u8],
+    width: u32,
+    height: u32,
+    amount: f64,
+    size: f64,
+    feather: f64,
+    color: String,
+) {
+    let (cr, cg, cb, _) = hex_to_rgba(&color);
+    let cx = width as f64 / 2.0;
+    let cy = height as f64 / 2.0;
+    let max_dist = ((cx * cx + cy * cy).sqrt() * size).max(1.0);
+    let feather_width = max_dist * feather;
+
+    for y in 0..height {
+        for x in 0..width {
+            let idx = ((y * width + x) * 4) as usize;
+            if idx + 3 >= data.len() {
+                continue;
+            }
+
+            let dx = x as f64 - cx;
+            let dy = y as f64 - cy;
+            let dist = (dx * dx + dy * dy).sqrt();
+
+            let vignette;
+            if dist < max_dist - feather_width {
+                vignette = 0.0;
+            } else if dist > max_dist {
+                vignette = amount;
+            } else {
+                let t = (dist - (max_dist - feather_width)) / feather_width;
+                vignette = amount * t;
+            }
+
+            if vignette > 0.0 {
+                data[idx] = (data[idx] as f64 * (1.0 - vignette) + cr as f64 * vignette) as u8;
+                data[idx + 1] = (data[idx + 1] as f64 * (1.0 - vignette) + cg as f64 * vignette) as u8;
+                data[idx + 2] = (data[idx + 2] as f64 * (1.0 - vignette) + cb as f64 * vignette) as u8;
+            }
+        }
+    }
+}
+
+fn apply_brightness_contrast(
+    data: &mut [u8],
+    width: u32,
+    height: u32,
+    brightness: f64,
+    contrast: f64,
+) {
+    for y in 0..height {
+        for x in 0..width {
+            let idx = ((y * width + x) * 4) as usize;
+            if idx + 3 >= data.len() {
+                continue;
+            }
+
+            for i in 0..3 {
+                let v = data[idx + i] as f64 / 255.0;
+                let v2 = (v - 0.5) * (1.0 + contrast) + 0.5 + brightness;
+                data[idx + i] = (v2.clamp(0.0, 1.0) * 255.0) as u8;
+            }
+        }
+    }
+}
+
+fn apply_hue_saturation(
+    data: &mut [u8],
+    width: u32,
+    height: u32,
+    hue_shift: f64,
+    saturation: f64,
+) {
+    for y in 0..height {
+        for x in 0..width {
+            let idx = ((y * width + x) * 4) as usize;
+            if idx + 3 >= data.len() {
+                continue;
+            }
+
+            let r = data[idx] as f64 / 255.0;
+            let g = data[idx + 1] as f64 / 255.0;
+            let b = data[idx + 2] as f64 / 255.0;
+
+            let (h, s, v) = rgb_to_hsv(r, g, b);
+            let h2 = (h + hue_shift / 360.0) % 1.0;
+            let s2 = (s * (1.0 + saturation)).clamp(0.0, 1.0);
+
+            let (r2, g2, b2) = hsv_to_rgb(h2, s2, v);
+            data[idx] = (r2 * 255.0) as u8;
+            data[idx + 1] = (g2 * 255.0) as u8;
+            data[idx + 2] = (b2 * 255.0) as u8;
+        }
+    }
+}
+
+fn rgb_to_hsv(r: f64, g: f64, b: f64) -> (f64, f64, f64) {
+    let max = r.max(g).max(b);
+    let min = r.min(g).min(b);
+    let delta = max - min;
+
+    let h = if delta == 0.0 {
+        0.0
+    } else if max == r {
+        ((g - b) / delta) % 6.0 / 6.0
+    } else if max == g {
+        ((b - r) / delta + 2.0) / 6.0
+    } else {
+        ((r - g) / delta + 4.0) / 6.0
+    };
+
+    let s = if max == 0.0 { 0.0 } else { delta / max };
+    let v = max;
+
+    (h.abs(), s, v)
+}
+
+fn hsv_to_rgb(h: f64, s: f64, v: f64) -> (f64, f64, f64) {
+    let c = v * s;
+    let x = c * (1.0 - ((h * 6.0) % 2.0 - 1.0).abs());
+    let m = v - c;
+
+    let (r, g, b) = if h < 1.0 / 6.0 {
+        (c, x, 0.0)
+    } else if h < 2.0 / 6.0 {
+        (x, c, 0.0)
+    } else if h < 3.0 / 6.0 {
+        (0.0, c, x)
+    } else if h < 4.0 / 6.0 {
+        (0.0, x, c)
+    } else if h < 5.0 / 6.0 {
+        (x, 0.0, c)
+    } else {
+        (c, 0.0, x)
+    };
+
+    (r + m, g + m, b + m)
+}
+
+fn apply_color_correction(
+    data: &mut [u8],
+    width: u32,
+    height: u32,
+    exposure: f64,
+    gamma: f64,
+    saturation: f64,
+) {
+    for y in 0..height {
+        for x in 0..width {
+            let idx = ((y * width + x) * 4) as usize;
+            if idx + 3 >= data.len() {
+                continue;
+            }
+
+            for i in 0..3 {
+                let v = data[idx + i] as f64 / 255.0;
+                let v2 = v * (1.0 + exposure);
+                let v3 = if v2 > 0.0 { v2.powf(1.0 / gamma) } else { 0.0 };
+                data[idx + i] = (v3.clamp(0.0, 1.0) * 255.0) as u8;
+            }
+
+            let r = data[idx] as f64 / 255.0;
+            let g = data[idx + 1] as f64 / 255.0;
+            let b = data[idx + 2] as f64 / 255.0;
+            let (_, s, v) = rgb_to_hsv(r, g, b);
+            let s2 = (s * (1.0 + saturation)).clamp(0.0, 1.0);
+            let (r2, g2, b2) = hsv_to_rgb(0.0, s2, v);
+            data[idx] = (r2 * 255.0) as u8;
+            data[idx + 1] = (g2 * 255.0) as u8;
+            data[idx + 2] = (b2 * 255.0) as u8;
+        }
+    }
+}
+
+fn apply_levels(
+    data: &mut [u8],
+    width: u32,
+    height: u32,
+    black: f64,
+    white: f64,
+    gamma: f64,
+) {
+    let scale = if white > black { 1.0 / (white - black) } else { 1.0 };
+
+    for y in 0..height {
+        for x in 0..width {
+            let idx = ((y * width + x) * 4) as usize;
+            if idx + 3 >= data.len() {
+                continue;
+            }
+
+            for i in 0..3 {
+                let v = data[idx + i] as f64 / 255.0;
+                let v2 = ((v - black) * scale).max(0.0);
+                let v3 = if v2 > 0.0 { v2.powf(1.0 / gamma) } else { 0.0 };
+                data[idx + i] = (v3.clamp(0.0, 1.0) * 255.0) as u8;
+            }
+        }
+    }
+}
+
+fn apply_noise(data: &mut [u8], width: u32, height: u32, amount: f64, seed: i32) {
+    let mut rng = SimpleRng::new(seed as u64);
+
+    for y in 0..height {
+        for x in 0..width {
+            let idx = ((y * width + x) * 4) as usize;
+            if idx + 3 >= data.len() {
+                continue;
+            }
+
+            let noise = (rng.next_f64() - 0.5) * 2.0 * amount * 255.0;
+            for i in 0..3 {
+                let v = data[idx + i] as f64 + noise;
+                data[idx + i] = (v.clamp(0.0, 255.0)) as u8;
+            }
+        }
+    }
+}
+
+fn apply_flip(data: &mut [u8], width: u32, height: u32, horizontal: bool, vertical: bool) {
+    if horizontal {
+        let mut flipped = data.to_vec();
+        for y in 0..height {
+            for x in 0..width {
+                let src_x = width - 1 - x;
+                let src_idx = ((y * width + src_x) * 4) as usize;
+                let dst_idx = ((y * width + x) * 4) as usize;
+                if src_idx + 3 < data.len() && dst_idx + 3 < data.len() {
+                    flipped[dst_idx..dst_idx + 4].copy_from_slice(&data[src_idx..src_idx + 4]);
+                }
+            }
+        }
+        data.copy_from_slice(&flipped);
+    }
+
+    if vertical {
+        let mut flipped = data.to_vec();
+        for y in 0..height {
+            let src_y = height - 1 - y;
+            for x in 0..width {
+                let src_idx = ((src_y * width + x) * 4) as usize;
+                let dst_idx = ((y * width + x) * 4) as usize;
+                if src_idx + 3 < data.len() && dst_idx + 3 < data.len() {
+                    flipped[dst_idx..dst_idx + 4].copy_from_slice(&data[src_idx..src_idx + 4]);
+                }
+            }
+        }
+        data.copy_from_slice(&flipped);
+    }
+}
+
+struct SimpleRng {
+    state: u64,
+}
+
+impl SimpleRng {
+    fn new(seed: u64) -> Self {
+        Self { state: seed.wrapping_add(1234567890) }
+    }
+
+    fn next_u64(&mut self) -> u64 {
+        self.state = self.state.wrapping_mul(6364136223846793005).wrapping_add(1);
+        self.state
+    }
+
+    fn next_f64(&mut self) -> f64 {
+        (self.next_u64() >> 11) as f64 / (u64::MAX >> 11) as f64
     }
 }
 
